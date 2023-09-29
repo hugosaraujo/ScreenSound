@@ -1,6 +1,6 @@
 ﻿using System.Threading.Channels;
 
-List<string> listaDeBandas = new List<string>();  
+List<string> listaDeBandas = new List<string> {"Men at Work", "Kali Uchis"};  
 
 void ExibeBannerPrograma ()
 {
@@ -34,7 +34,7 @@ void ExibeOpcoesMenu()
     {
         case 1: RegistroDeBanda();
             break;
-        case 2: Console.WriteLine("Opção 2 Escolhida...");
+        case 2: MostrarBandasRegistradas();
             break;
         case 3: Console.WriteLine("Opção 3 Escolhida...");
             break;
@@ -60,5 +60,18 @@ void RegistroDeBanda()
     ExibeOpcoesMenu();
 }
 
-ExibeBannerPrograma();
+void MostrarBandasRegistradas()
+{
+    Console.Clear();
+    Console.WriteLine("Exibindo bandas registradas");
+    foreach (string banda in listaDeBandas)
+    {
+        Console.WriteLine($"Nome: {banda}");
+    }
+    Console.Write("Pressione alguma tecla para sair");
+    Console.ReadKey();
+    Console.Clear();
+    ExibeOpcoesMenu();
+}
+
 ExibeOpcoesMenu();
