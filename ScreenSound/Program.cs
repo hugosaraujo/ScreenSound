@@ -1,15 +1,16 @@
-﻿
-using System.Threading.Channels;
+﻿using System.Threading.Channels;
+
+List<string> listaDeBandas = new List<string>();  
 
 void ExibeBannerPrograma ()
 {
     string mensagemBoasVindas = @"
-░██████╗░█████╗░██████╗░███████╗███╗░░██╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░░██████╗
-██╔════╝██╔══██╗██╔══██╗██╔════╝████╗░██║████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗██╔════╝
-╚█████╗░██║░░╚═╝██████╔╝█████╗░░██╔██╗██║██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║╚█████╗░
-░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██║╚████║██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║░╚═══██╗
-██████╔╝╚█████╔╝██║░░██║███████╗██║░╚███║██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝██████╔╝
-╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░╚═════╝░
+░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
+██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
+╚█████╗░██║░░╚═╝██████╔╝█████╗░░█████╗░░██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
+░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██╔══╝░░██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
+██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
+╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
 ";
     Console.WriteLine(mensagemBoasVindas);
     Console.WriteLine("Boas vindas ao Screen Sound");
@@ -17,6 +18,7 @@ void ExibeBannerPrograma ()
 }
 void ExibeOpcoesMenu()
 {
+    ExibeBannerPrograma();
     Console.WriteLine();
     Console.WriteLine("Digite 1 para registrar uma banda");
     Console.WriteLine("Digite 2 para mostrar todas as bandas");
@@ -30,7 +32,7 @@ void ExibeOpcoesMenu()
 
     switch(opcaoEscolhida)
     {
-        case 1: Console.WriteLine("Opção 1 Escolhida...");
+        case 1: RegistroDeBanda();
             break;
         case 2: Console.WriteLine("Opção 2 Escolhida...");
             break;
@@ -43,6 +45,19 @@ void ExibeOpcoesMenu()
         default: Console.WriteLine("Opção Inválida!");
             break; 
     }
+}
+
+void RegistroDeBanda()
+{
+    Console.Clear();
+    Console.WriteLine("Registro de nome de banda");
+    Console.Write("Digite o nome da banda que queira registrar: ");
+    string nomeDaBanda = Console.ReadLine()!;
+    listaDeBandas.Add(nomeDaBanda);
+    Console.WriteLine($"{nomeDaBanda} foi registrado com sucesso!");
+    Thread.Sleep(2000);
+    Console.Clear();
+    ExibeOpcoesMenu();
 }
 
 ExibeBannerPrograma();
