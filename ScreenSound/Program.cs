@@ -50,7 +50,7 @@ void ExibeOpcoesMenu()
 void RegistroDeBanda()
 {
     Console.Clear();
-    Console.WriteLine("Registro de nome de banda");
+    ExibeTituloOpcaoMenu("Resgitro de Banda");
     Console.Write("Digite o nome da banda que queira registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
     listaDeBandas.Add(nomeDaBanda);
@@ -63,7 +63,7 @@ void RegistroDeBanda()
 void MostrarBandasRegistradas()
 {
     Console.Clear();
-    Console.WriteLine("Exibindo bandas registradas");
+    ExibeTituloOpcaoMenu("Exibindo bandas registradas");
     foreach (string banda in listaDeBandas)
     {
         Console.WriteLine($"Nome: {banda}");
@@ -73,5 +73,15 @@ void MostrarBandasRegistradas()
     Console.Clear();
     ExibeOpcoesMenu();
 }
+
+void ExibeTituloOpcaoMenu(string titulo)
+{
+    int quantidadeLetras = titulo.Length;
+    string asteriscos = string.Empty.PadLeft(quantidadeLetras+2, '*');
+    Console.WriteLine(asteriscos);
+    Console.WriteLine($"*{titulo}*");
+    Console.WriteLine(asteriscos);
+    Console.WriteLine();
+}   
 
 ExibeOpcoesMenu();
