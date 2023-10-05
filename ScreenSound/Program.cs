@@ -41,7 +41,7 @@ void ExibeOpcoesMenu()
             break;
         case 3: AvaliarBanda();
             break;
-        case 4: Console.WriteLine("Opção 4 Escolhida...");
+        case 4: ExibirMediaBanda();
             break;
         case 0: Console.WriteLine("Fechando o menu...");
             break;
@@ -113,5 +113,33 @@ void AvaliarBanda()
     Console.Clear();
     ExibeOpcoesMenu();
 }       
+
+void ExibirMediaBanda()
+{
+    Console.Clear();
+    ExibeTituloOpcaoMenu("Exibir média da banda");
+    Console.Write("Digite o nome da banda que você quer saber a média: ");
+    string nomeDaBanda = Console.ReadLine()!;
+    if (bandas.ContainsKey(nomeDaBanda))
+    {
+        double media = bandas[nomeDaBanda].Average();
+        string mediaFormatada = media.ToString("N2");
+        Console.WriteLine($"A média da banda {nomeDaBanda} é {mediaFormatada}");
+        Thread.Sleep(3000);
+        Console.Clear();
+        ExibeOpcoesMenu();
+    }
+    else
+    {
+        Console.WriteLine();
+        Console.WriteLine("O nome dessa banda não está registrado no Screen Sound!");
+        Console.WriteLine("Pressione qualquer tecla para voltar para o Menu Principal... ");
+        Console.ReadKey();
+        Console.Clear();
+        ExibeOpcoesMenu();
+    }
+    //perguntar o nome da banda e fazer uma validação se a banda existe
+    //calcular a média da banda
+}
 
 ExibeOpcoesMenu();
