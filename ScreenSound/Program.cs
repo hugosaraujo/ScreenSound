@@ -45,7 +45,7 @@ void ExibeOpcoesMenu()
             break;
         case 0: Console.WriteLine("Fechando o menu...");
             break;
-        default: Console.WriteLine("Opção Inválida!");
+        default: AvisoOpcaoInvalida();
             break; 
     }
 }
@@ -138,8 +138,14 @@ void ExibirMediaBanda()
         Console.Clear();
         ExibeOpcoesMenu();
     }
-    //perguntar o nome da banda e fazer uma validação se a banda existe
-    //calcular a média da banda
+}
+void AvisoOpcaoInvalida()
+{
+    Console.WriteLine("Opção Inválida!");
+    Console.WriteLine("Pressione qualquer tecla para voltar para o Menu Principal... ");
+    Console.ReadKey();
+    Console.Clear();
+    ExibeOpcoesMenu();
 }
 
 ExibeOpcoesMenu();
