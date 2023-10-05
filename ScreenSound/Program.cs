@@ -1,6 +1,9 @@
 ﻿using System.Threading.Channels;
 
-List<string> listaDeBandas = new List<string> {"Men at Work", "Kali Uchis"};  
+Dictionary<string, List<int>> bandas = new Dictionary<string, List<int>>(); 
+bandas.Add("Mastodon", new List<int> { 10, 9, 4});
+bandas.Add("Gojira", new List<int> { 8 });
+bandas.Add("Mac DeMarco", new());
 
 void ExibeBannerPrograma ()
 {
@@ -36,7 +39,7 @@ void ExibeOpcoesMenu()
             break;
         case 2: MostrarBandasRegistradas();
             break;
-        case 3: Console.WriteLine("Opção 3 Escolhida...");
+        case 3: AvaliarBanda();
             break;
         case 4: Console.WriteLine("Opção 4 Escolhida...");
             break;
@@ -53,7 +56,7 @@ void RegistroDeBanda()
     ExibeTituloOpcaoMenu("Resgitro de Banda");
     Console.Write("Digite o nome da banda que queira registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
-    listaDeBandas.Add(nomeDaBanda);
+    bandas.Add(nomeDaBanda, new List<int>());
     Console.WriteLine($"{nomeDaBanda} foi registrado com sucesso!");
     Thread.Sleep(2000);
     Console.Clear();
@@ -64,7 +67,7 @@ void MostrarBandasRegistradas()
 {
     Console.Clear();
     ExibeTituloOpcaoMenu("Exibindo bandas registradas");
-    foreach (string banda in listaDeBandas)
+    foreach (string banda in bandas.Keys)
     {
         Console.WriteLine($"Nome: {banda}");
     }
@@ -83,5 +86,32 @@ void ExibeTituloOpcaoMenu(string titulo)
     Console.WriteLine(asteriscos);
     Console.WriteLine();
 }   
+
+void AvaliarBanda()
+{
+    Console.Clear();
+    ExibeTituloOpcaoMenu("Avaliar Banda");
+    Console.Write("Digite o nome da banda que deseja avaliar: ");
+    string nomeDaBanda = Console.ReadLine()!;
+    if (bandas.ContainsKey(nomeDaBanda))
+    {
+        Console.Write("Digite a nota da banda: ");
+        int notaDaBanda = int.Parse(Console.ReadLine()!);
+        bandas[nomeDaBanda].Add(notaDaBanda);
+        Console.WriteLine($"{nomeDaBanda} foi avaliado(a) com sucesso!");
+    }
+    else
+    {
+        Console.WriteLine();
+        Console.WriteLine($"{nomeDaBanda} não foi encontrado(a)!");
+        Console.Write("Pressione alguma tecla para voltar para o Menu...");
+        Console.ReadKey();
+        Console.Clear();
+        ExibeOpcoesMenu();
+    }
+    Thread.Sleep(2000);
+    Console.Clear();
+    ExibeOpcoesMenu();
+}       
 
 ExibeOpcoesMenu();
