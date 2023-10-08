@@ -5,11 +5,14 @@ musica1.nome = "I did something bad";
 musica1.artista = "Taylor Swift";
 musica1.duracao = 214;
 
+musica1.ExibirFichaTecnica();
+
 Musica musica2 = new Musica();
 musica2.nome = "The Less I Know The Better";
 musica2.artista = "Tame Impala";
 musica2.duracao = 216;
 
+musica2.ExibirFichaTecnica();
 
 #region
 //Dictionary<string, List<int>> bandas = new Dictionary<string, List<int>>(); 
