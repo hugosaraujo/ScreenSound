@@ -1,16 +1,16 @@
 ﻿using System.Threading.Channels;
 
 Musica musica1 = new Musica();
-musica1.nome = "I did something bad";
-musica1.artista = "Taylor Swift";
-musica1.duracao = 214;
+musica1.Nome = "I did something bad";
+musica1.Artista = "Taylor Swift";
+musica1.Duracao = 214;
 
 musica1.ExibirFichaTecnica();
 
 Musica musica2 = new Musica();
-musica2.nome = "The Less I Know The Better";
-musica2.artista = "Tame Impala";
-musica2.duracao = 216;
+musica2.Nome = "The Less I Know The Better";
+musica2.Artista = "Tame Impala";
+musica2.Duracao = 216;
 
 musica2.ExibirFichaTecnica();
 
