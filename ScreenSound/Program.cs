@@ -1,16 +1,18 @@
 ﻿using System.Threading.Channels;
 
-Banda kaliUchis = new();
-kaliUchis.Nome = "Kali Uchis";
+Banda kaliUchis = new("Kali Uchis");
 
-Album EpPorVida = new(kaliUchis);
-EpPorVida.Nome = "Por Vida";
-Musica musica1 = new(kaliUchis);
-musica1.Nome = "Loner";
-musica1.Duracao = 312;
-Musica musica2 = new(kaliUchis);
-musica2.Nome = "Lottery";
-musica2.Duracao = 206;
+Album EpPorVida = new(kaliUchis, "Por Vida");
+Musica musica1 = new(kaliUchis, "Loner")
+{
+    Duracao = 312,
+    Disponibilidade = false
+};
+Musica musica2 = new(kaliUchis, "Lottery")
+{
+    Duracao = 206,
+    Disponibilidade = true
+};
 
 EpPorVida.AdicionarMusica(musica1);
 EpPorVida.AdicionarMusica(musica2);

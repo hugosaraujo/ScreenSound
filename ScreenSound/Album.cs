@@ -1,12 +1,14 @@
 ﻿class Album
 {
-    public Album(Banda artista)
+    private List<Musica> faixasDoAlbum = new List<Musica>();
+ 
+    public Album(Banda artista, string nome)
     {
         Artista = artista;
+        Nome = nome;
     }
 
-    private List<Musica> faixasDoAlbum = new List<Musica>();
-    public string Nome { get; set; }
+    public string Nome { get; }
     public Banda Artista { get; }
     public int DuracaoTotal => faixasDoAlbum.Sum(faixa => faixa.Duracao);
 
