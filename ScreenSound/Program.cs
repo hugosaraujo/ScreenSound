@@ -1,22 +1,23 @@
 ﻿using System.Threading.Channels;
 
-Album EpPorVida = new();
-EpPorVida.Nome = "Por Vida";
-EpPorVida.Artista = "Kali Uchis";
+Banda kaliUchis = new();
+kaliUchis.Nome = "Kali Uchis";
 
-Musica musica1 = new();
+Album EpPorVida = new(kaliUchis);
+EpPorVida.Nome = "Por Vida";
+Musica musica1 = new(kaliUchis);
 musica1.Nome = "Loner";
 musica1.Duracao = 312;
-
-Musica musica2 = new();
+Musica musica2 = new(kaliUchis);
 musica2.Nome = "Lottery";
 musica2.Duracao = 206;
 
 EpPorVida.AdicionarMusica(musica1);
 EpPorVida.AdicionarMusica(musica2);
 
-EpPorVida.ExibirFaixasDoAlbum();
+kaliUchis.AdicionarAlbum(EpPorVida);
 
+musica1.ExibirFichaTecnica();
 #region
 //Dictionary<string, List<int>> bandas = new Dictionary<string, List<int>>(); 
 //bandas.Add("Mastodon", new List<int> { 10, 9, 4});
