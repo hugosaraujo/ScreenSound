@@ -1,25 +1,15 @@
-﻿using System.Threading.Channels;
+﻿using System.Net.Http.Headers;
+using System.Threading.Channels;
 
-Banda kaliUchis = new("Kali Uchis");
+Podcast pt = new Podcast("Bruno Gunter", "Podtrash");
 
-Album EpPorVida = new(kaliUchis, "Por Vida");
-Musica musica1 = new(kaliUchis, "Loner")
-{
-    Duracao = 312,
-    Disponibilidade = false
-};
-Musica musica2 = new(kaliUchis, "Lottery")
-{
-    Duracao = 206,
-    Disponibilidade = true
-};
+Episodio psychoCop = new(684, "Psychocop");
+Episodio candyman = new(584, "Candyman");
 
-EpPorVida.AdicionarMusica(musica1);
-EpPorVida.AdicionarMusica(musica2);
+pt.AdicionarEpisodio(psychoCop);
+pt.AdicionarEpisodio(candyman);
 
-kaliUchis.AdicionarAlbum(EpPorVida);
-
-musica1.ExibirFichaTecnica();
+pt.ExibirDetalhes();
 #region
 //Dictionary<string, List<int>> bandas = new Dictionary<string, List<int>>(); 
 //bandas.Add("Mastodon", new List<int> { 10, 9, 4});
