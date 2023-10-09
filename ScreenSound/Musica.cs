@@ -1,10 +1,14 @@
-﻿class Musica
+﻿using System.Reflection.Metadata.Ecma335;
+
+class Musica
 {
     public string Nome { get; set; }
     public string Artista { get; set; }
     public int Duracao { get; set; }
     public bool Disponibilidade { get; set; }
-
+    
+    public string DescricaoResumida => $"{Nome} pertence ao Artista {Artista}";
+    
     public void ExibirFichaTecnica()
     {
         Console.WriteLine($"Nome: {Nome}");

@@ -1,18 +1,21 @@
 ﻿using System.Threading.Channels;
 
-Musica musica1 = new Musica();
-musica1.Nome = "I did something bad";
-musica1.Artista = "Taylor Swift";
-musica1.Duracao = 214;
+Album EpPorVida = new();
+EpPorVida.Nome = "Por Vida";
+EpPorVida.Artista = "Kali Uchis";
 
-musica1.ExibirFichaTecnica();
+Musica musica1 = new();
+musica1.Nome = "Loner";
+musica1.Duracao = 312;
 
-Musica musica2 = new Musica();
-musica2.Nome = "The Less I Know The Better";
-musica2.Artista = "Tame Impala";
-musica2.Duracao = 216;
+Musica musica2 = new();
+musica2.Nome = "Lottery";
+musica2.Duracao = 206;
 
-musica2.ExibirFichaTecnica();
+EpPorVida.AdicionarMusica(musica1);
+EpPorVida.AdicionarMusica(musica2);
+
+EpPorVida.ExibirFaixasDoAlbum();
 
 #region
 //Dictionary<string, List<int>> bandas = new Dictionary<string, List<int>>(); 
