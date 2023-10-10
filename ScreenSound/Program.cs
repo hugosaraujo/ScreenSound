@@ -9,6 +9,14 @@ Episodio candyman = new(584, "Candyman");
 pt.AdicionarEpisodio(psychoCop);
 pt.AdicionarEpisodio(candyman);
 
+Episodio exorcista = new(666, "Exorcista");
+exorcista.AdicionarConvidados("Dalenogare");
+exorcista.AdicionarConvidados("Lucas Maia");
+
+pt.AdicionarEpisodio(exorcista);
+
+Console.WriteLine(exorcista.Resumo);
+
 pt.ExibirDetalhes();
 #region
 //Dictionary<string, List<int>> bandas = new Dictionary<string, List<int>>(); 
