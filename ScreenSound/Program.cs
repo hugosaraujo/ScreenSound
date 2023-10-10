@@ -3,19 +3,20 @@ using System.Threading.Channels;
 
 Podcast pt = new Podcast("Bruno Gunter", "Podtrash");
 
-Episodio psychoCop = new(684, "Psychocop");
-Episodio candyman = new(584, "Candyman");
+Episodio psychoCop = new(684, "Psychocop", 62);
+Episodio candyman = new(584, "Candyman", 73);
 
 pt.AdicionarEpisodio(psychoCop);
 pt.AdicionarEpisodio(candyman);
 
-Episodio exorcista = new(666, "Exorcista");
+Episodio exorcista = new(666, "Exorcista", 140);
 exorcista.AdicionarConvidados("Dalenogare");
 exorcista.AdicionarConvidados("Lucas Maia");
 
 pt.AdicionarEpisodio(exorcista);
 
 Console.WriteLine(exorcista.Resumo);
+Console.WriteLine(candyman.Resumo);
 
 pt.ExibirDetalhes();
 #region
