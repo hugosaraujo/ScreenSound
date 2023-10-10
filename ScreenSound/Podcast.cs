@@ -22,8 +22,7 @@
     {
         Console.WriteLine($"O Podcast {Nome} é apresentado por {Host}");
         Console.WriteLine($"Eis uma lista de episódios de {Nome}");
-        //ordenar lista de episódios pela ordem
-        foreach (Episodio episodio in episodios)
+        foreach (Episodio episodio in episodios.OrderBy(episodio => episodio.Ordem))
         { 
             Console.WriteLine($"{episodio.Ordem} - {episodio.Titulo}");
         }
