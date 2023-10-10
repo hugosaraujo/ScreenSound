@@ -10,11 +10,10 @@
 
     public string Host { get; }
     public string Nome { get; }
-    public int TotalEpisodios { get; set; }
+    public int TotalEpisodios => episodios.Count;
 
     public void AdicionarEpisodio(Episodio episodio)
     {
-        TotalEpisodios++;
         episodios.Add(episodio);
     }
 
@@ -24,7 +23,8 @@
         Console.WriteLine($"Eis uma lista de episódios de {Nome}");
         foreach (Episodio episodio in episodios.OrderBy(episodio => episodio.Ordem))
         { 
-            Console.WriteLine($"{episodio.Ordem} - {episodio.Titulo}");
+            Console.WriteLine(episodio.Resumo);
         }
+        Console.WriteLine($"Foram registrados {TotalEpisodios} episódios de {Nome}");
     }
 }
