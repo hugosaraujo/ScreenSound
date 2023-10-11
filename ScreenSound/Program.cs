@@ -41,8 +41,8 @@ void ExibeOpcoesMenu()
             RegistroDeBanda();
             break;
         case 2:
-            Console.WriteLine("Registrando um album da banda");
-            break
+            RegistrarAlbum();
+            break;
         case 3:
             MostrarBandasRegistradas();
             break;
@@ -155,6 +155,22 @@ void AvisoOpcaoInvalida()
     Console.WriteLine("Opção Inválida!");
     Console.WriteLine("Pressione qualquer tecla para voltar para o Menu Principal... ");
     Console.ReadKey();
+    Console.Clear();
+    ExibeOpcoesMenu();
+}
+void RegistrarAlbum()
+{
+    Console.Clear();
+    ExibeTituloOpcaoMenu("Registrar Album");
+    Console.Write("Digite o nome da banda: ");
+    string nomeDaBanda = Console.ReadLine()!;
+    Console.Write("Digite o album que quer registrar: ");
+    string nomeDoAlbum = Console.ReadLine()!;
+    /**
+     * Espaço para implementar a lógica de registrar um album
+     *     */
+    Console.WriteLine($"{nomeDoAlbum} da {nomeDaBanda} foi registrado com sucesso!");
+    Thread.Sleep(4000);
     Console.Clear();
     ExibeOpcoesMenu();
 }
