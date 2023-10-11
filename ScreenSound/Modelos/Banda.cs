@@ -3,6 +3,7 @@
 class Banda
 {
     private List<Album> albunsDaBanda = new List<Album>();
+    private List<int> notas = new();
     public Banda(string nome)
     {
         Nome = nome;
@@ -10,6 +11,7 @@ class Banda
 
     
     public string Nome { get; }
+    public double Media => notas.Average();
 
 
     public void AdicionarAlbum(Album album)
@@ -26,5 +28,9 @@ class Banda
             Console.WriteLine($"Album: {album.Nome}");
             Console.WriteLine($"Duração Total - {album.DuracaoTotal} segundos");
         }
+    }
+    public void AdicionarNota(int nota)
+    {
+        notas.Add(nota);
     }
 }

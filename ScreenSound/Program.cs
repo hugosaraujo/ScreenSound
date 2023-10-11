@@ -1,10 +1,21 @@
 ﻿using System.Net.Http.Headers;
 using System.Threading.Channels;
+using ScreenSound.Modelos;
 
-Dictionary<string, List<int>> bandas = new Dictionary<string, List<int>>();
-bandas.Add("Mastodon", new List<int> { 10, 9, 4 });
-bandas.Add("Gojira", new List<int> { 8 });
-bandas.Add("Mac DeMarco", new());
+Banda braza = new Banda("Braza");
+braza.AdicionarNota(5);
+braza.AdicionarNota(9);
+braza.AdicionarNota(8);
+Banda vacations = new("Vacations");
+vacations.AdicionarNota(10);
+vacations.AdicionarNota(9);
+vacations.AdicionarNota(10);
+
+Dictionary<string, Banda> bandasRegistradas = new()
+{
+    { braza.Nome, braza },
+    { vacations.Nome, vacations }
+};
 
 void ExibirBannerPrograma()
 {
@@ -67,7 +78,8 @@ void RegistroDeBanda()
     ExibirTituloOpcaoMenu("Resgitro de Banda");
     Console.Write("Digite o nome da banda que queira registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
-    bandas.Add(nomeDaBanda, new List<int>());
+    Banda banda = new(nomeDaBanda);
+    bandasRegistradas.Add(nomeDaBanda, banda);
     Console.WriteLine($"{nomeDaBanda} foi registrado com sucesso!");
     Thread.Sleep(2000);
     Console.Clear();
@@ -78,7 +90,7 @@ void MostrarBandasRegistradas()
 {
     Console.Clear();
     ExibirTituloOpcaoMenu("Exibindo bandas registradas");
-    foreach (string banda in bandas.Keys)
+    foreach (string banda in bandasRegistradas.Keys)
     {
         Console.WriteLine($"Nome: {banda}");
     }
@@ -104,11 +116,12 @@ void AvaliarBanda()
     ExibirTituloOpcaoMenu("Avaliar Banda");
     Console.Write("Digite o nome da banda que deseja avaliar: ");
     string nomeDaBanda = Console.ReadLine()!;
-    if (bandas.ContainsKey(nomeDaBanda))
+    if (bandasRegistradas.ContainsKey(nomeDaBanda))
     {
+        Banda banda = bandasRegistradas[nomeDaBanda];
         Console.Write("Digite a nota da banda: ");
         int notaDaBanda = int.Parse(Console.ReadLine()!);
-        bandas[nomeDaBanda].Add(notaDaBanda);
+        banda.AdicionarNota(notaDaBanda);
         Console.WriteLine($"{nomeDaBanda} foi avaliado(a) com sucesso!");
     }
     else
@@ -138,14 +151,28 @@ void RegistrarAlbum()
     ExibirTituloOpcaoMenu("Registrar Album");
     Console.Write("Digite o nome da banda: ");
     string nomeDaBanda = Console.ReadLine()!;
-    Console.Write("Digite o album que quer registrar: ");
-    string nomeDoAlbum = Console.ReadLine()!;
-    /**
-     * Espaço para implementar a lógica de registrar um album
-     *     */
-    Console.WriteLine($"{nomeDoAlbum} da {nomeDaBanda} foi registrado com sucesso!");
-    Thread.Sleep(4000);
-    Console.Clear();
+    if(bandasRegistradas.ContainsKey(nomeDaBanda)) 
+    {
+        Console.Write("Digite o album que quer registrar: ");
+        string nomeDoAlbum = Console.ReadLine()!;
+        Banda banda = bandasRegistradas[nomeDaBanda];
+        banda.AdicionarAlbum(new Album(banda, nomeDoAlbum));
+        /**
+         * Espaço para implementar a lógica de registrar um album
+         *     */
+        Console.WriteLine($"{nomeDoAlbum} da {nomeDaBanda} foi registrado com sucesso!");
+        Thread.Sleep(4000);
+        Console.Clear();
+        
+    }
+    else
+    {
+        Console.Clear();
+        Console.WriteLine($"A banda {nomeDaBanda} não foi encontrada!");
+        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+        Console.ReadKey();
+        Console.Clear();
+    }
     ExibeOpcoesMenu();
 }
 void ExibirDetalhes() { 
@@ -153,11 +180,11 @@ void ExibirDetalhes() {
     ExibirTituloOpcaoMenu("Exibir detalhes da banda");
     Console.Write("Digite o nome da banda que você quer saber os detalhes: ");
     string nomeDaBanda = Console.ReadLine()!;
-    if(bandas.ContainsKey(nomeDaBanda))
+    if(bandasRegistradas.ContainsKey(nomeDaBanda))
     {
-        List<int> avaliacoes = bandas[nomeDaBanda];
+        Banda banda = bandasRegistradas[nomeDaBanda];
         Console.WriteLine();
-        Console.WriteLine($"A média da banda {nomeDaBanda} é {avaliacoes.Average()}");
+        Console.WriteLine($"A média da banda {nomeDaBanda} é {banda.Media}");
         /**
          * Espaço reservado para completar função
          */
