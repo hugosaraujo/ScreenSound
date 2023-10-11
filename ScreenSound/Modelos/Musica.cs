@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿namespace ScreenSound.Modelos;
+using System.Reflection.Metadata.Ecma335;
 
 class Musica
 {

@@ -1,4 +1,6 @@
-﻿class Album
+﻿namespace ScreenSound.Modelos;
+
+class Album
 {
     private List<Musica> faixasDoAlbum = new List<Musica>();
  
