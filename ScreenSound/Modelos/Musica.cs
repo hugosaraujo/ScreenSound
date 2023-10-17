@@ -1,7 +1,7 @@
 ﻿namespace ScreenSound.Modelos;
 using System.Reflection.Metadata.Ecma335;
 
-class Musica
+internal class Musica
 {
     public Musica(Banda artista, string nome)
     {
