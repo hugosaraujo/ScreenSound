@@ -3,13 +3,13 @@ using System.Threading.Channels;
 using ScreenSound.Modelos;
 
 Banda braza = new Banda("Braza");
-braza.AdicionarNota(5);
-braza.AdicionarNota(9);
-braza.AdicionarNota(8);
+braza.AdicionarNota(new Avaliacao (5));
+braza.AdicionarNota(new Avaliacao (9));
+braza.AdicionarNota(new Avaliacao (8));
 Banda vacations = new("Vacations");
-vacations.AdicionarNota(10);
-vacations.AdicionarNota(9);
-vacations.AdicionarNota(10);
+vacations.AdicionarNota(new Avaliacao(10));
+vacations.AdicionarNota(new Avaliacao(9));
+vacations.AdicionarNota(new Avaliacao(10));
 
 Dictionary<string, Banda> bandasRegistradas = new()
 {
@@ -120,9 +120,9 @@ void AvaliarBanda()
     {
         Banda banda = bandasRegistradas[nomeDaBanda];
         Console.Write("Digite a nota da banda: ");
-        int notaDaBanda = int.Parse(Console.ReadLine()!);
-        banda.AdicionarNota(notaDaBanda);
-        Console.WriteLine($"{nomeDaBanda} foi avaliado(a) com sucesso!");
+        Avaliacao notaDaBanda = Avaliacao.Parse(Console.ReadLine()!);
+        banda.AdicionarNota((notaDaBanda));
+        Console.WriteLine($"Registrando a nota {notaDaBanda.Nota}. A {nomeDaBanda} foi avaliado(a) com sucesso!");
     }
     else
     {
