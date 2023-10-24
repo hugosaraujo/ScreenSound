@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Headers;
-using System.Threading.Channels;
-using ScreenSound.Modelos;
+﻿using ScreenSound.Modelos;
 
 Banda braza = new Banda("Braza");
 braza.AdicionarNota(new Avaliacao (5));
