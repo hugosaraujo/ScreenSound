@@ -1,4 +1,5 @@
-﻿using ScreenSound.Modelos;
+﻿using ScreenSound.Menus;
+using ScreenSound.Modelos;
 
 Banda braza = new Banda("Braza");
 braza.AdicionarNota(new Avaliacao (5));
@@ -59,7 +60,9 @@ void ExibeOpcoesMenu()
             AvaliarBanda();
             break;
         case 5:
-            ExibirDetalhes();
+            MenuExibirDetalhes exibirDetalhes = new();
+            exibirDetalhes.Executar(bandasRegistradas);
+            ExibeOpcoesMenu();
             break;
         case 0:
             Console.WriteLine("Fechando o menu...");
@@ -171,35 +174,6 @@ void RegistrarAlbum()
         Console.Clear();
     }
     ExibeOpcoesMenu();
-}
-void ExibirDetalhes() { 
-    Console.Clear();
-    ExibirTituloOpcaoMenu("Exibir detalhes da banda");
-    Console.Write("Digite o nome da banda que você quer saber os detalhes: ");
-    string nomeDaBanda = Console.ReadLine()!;
-    if(bandasRegistradas.ContainsKey(nomeDaBanda))
-    {
-        Banda banda = bandasRegistradas[nomeDaBanda];
-        Console.WriteLine();
-        Console.WriteLine($"A média da banda {nomeDaBanda} é {banda.Media}"); 
-        Console.WriteLine($"Foram registrados {Album.QuantidadeAlbuns} albuns");
-        /**
-         * Espaço reservado para completar função
-         */
-        Console.Write("Digite alguma tecla para voltar para o menu principal... ");
-        Console.ReadKey();
-        Console.Clear();
-        ExibeOpcoesMenu();
-    }
-    else
-    {
-        Console.Clear();
-        Console.WriteLine($"A banda {nomeDaBanda} não foi encontrada!");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-        Console.ReadKey();
-        Console.Clear();
-        ExibeOpcoesMenu();
-    }
 }
 
 ExibeOpcoesMenu();
