@@ -8,11 +8,13 @@ internal class Album
     {
         Artista = artista;
         Nome = nome;
+        QuantidadeAlbuns++;
     }
 
     public string Nome { get; }
     public Banda Artista { get; }
     public int DuracaoTotal => faixasDoAlbum.Sum(faixa => faixa.Duracao);
+    public static int QuantidadeAlbuns = 0;
 
     public void AdicionarMusica(Musica faixa)
     {

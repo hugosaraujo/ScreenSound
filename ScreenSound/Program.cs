@@ -161,7 +161,6 @@ void RegistrarAlbum()
         Console.WriteLine($"{nomeDoAlbum} da {nomeDaBanda} foi registrado com sucesso!");
         Thread.Sleep(4000);
         Console.Clear();
-        
     }
     else
     {
@@ -182,7 +181,8 @@ void ExibirDetalhes() {
     {
         Banda banda = bandasRegistradas[nomeDaBanda];
         Console.WriteLine();
-        Console.WriteLine($"A média da banda {nomeDaBanda} é {banda.Media}");
+        Console.WriteLine($"A média da banda {nomeDaBanda} é {banda.Media}"); 
+        Console.WriteLine($"Foram registrados {Album.QuantidadeAlbuns} albuns");
         /**
          * Espaço reservado para completar função
          */
