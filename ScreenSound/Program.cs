@@ -71,7 +71,8 @@ void ExibeOpcoesMenu()
             opcaoSair.Executar();
             break;
         default:
-            AvisarOpcaoInvalida();
+            MenuOpcaoInvalida opcaoInvalida = new();
+            opcaoInvalida.Executar();
             break;
     }
 }
@@ -112,14 +113,6 @@ void ExibirTituloOpcaoMenu(string titulo)
     Console.WriteLine($"*{titulo}*");
     Console.WriteLine(asteriscos);
     Console.WriteLine();
-}
-void AvisarOpcaoInvalida()
-{
-    Console.WriteLine("Opção Inválida!");
-    Console.WriteLine("Pressione qualquer tecla para voltar para o Menu Principal... ");
-    Console.ReadKey();
-    Console.Clear();
-    ExibeOpcoesMenu();
 }
 void RegistrarAlbum()
 {
