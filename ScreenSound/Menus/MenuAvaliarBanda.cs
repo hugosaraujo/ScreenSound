@@ -2,18 +2,8 @@
 
 namespace ScreenSound.Menus;
 
-internal class MenuAvaliarBanda
+internal class MenuAvaliarBanda:Menu
 {
-    void ExibirTituloOpcaoMenu(string titulo)
-    {
-        int quantidadeLetras = titulo.Length;
-        string asteriscos = string.Empty.PadLeft(quantidadeLetras + 2, '*');
-        Console.WriteLine(asteriscos);
-        Console.WriteLine($"*{titulo}*");
-        Console.WriteLine(asteriscos);
-        Console.WriteLine();
-    }
-
     public void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
         Console.Clear();
