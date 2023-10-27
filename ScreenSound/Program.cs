@@ -67,7 +67,8 @@ void ExibeOpcoesMenu()
             ExibeOpcoesMenu();
             break;
         case 0:
-            Console.WriteLine("Fechando o menu...");
+            MenuSair opcaoSair = new();
+            opcaoSair.Executar();
             break;
         default:
             AvisarOpcaoInvalida();
