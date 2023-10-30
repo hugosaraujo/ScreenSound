@@ -1,9 +1,12 @@
-﻿namespace ScreenSound.Menus;
+﻿using ScreenSound.Modelos;
 
-internal class MenuSair
+namespace ScreenSound.Menus;
+
+internal class MenuSair:Menu
 {
-    internal void Executar()
+    internal override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
+        Console.WriteLine();
         Console.WriteLine("Obrigado por usar o Screen Sound");
         Console.WriteLine("Para fechar a aplicação, pressione qualquer tecla");
         Console.ReadKey();

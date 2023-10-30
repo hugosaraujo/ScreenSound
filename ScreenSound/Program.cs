@@ -16,6 +16,15 @@ Dictionary<string, Banda> bandasRegistradas = new()
     { vacations.Nome, vacations }
 };
 
+Dictionary<int, Menu> opcoesMenu = new();
+opcoesMenu.Add(1, new MenuRegistrarBanda());
+opcoesMenu.Add(2, new MenuRegistrarAlbuns());
+opcoesMenu.Add(3, new MenuMostrarBandas());
+opcoesMenu.Add(4, new MenuAvaliarBanda());
+opcoesMenu.Add(5, new MenuExibirDetalhes());
+opcoesMenu.Add(0, new MenuSair());
+
+
 void ExibirBannerPrograma()
 {
     string mensagemBoasVindas = @"
@@ -45,41 +54,16 @@ void ExibeOpcoesMenu()
     Console.Write("Digite a sua opção: ");
     int opcaoEscolhida = int.Parse(Console.ReadLine()!);
 
-    switch (opcaoEscolhida)
+    if(opcoesMenu.ContainsKey(opcaoEscolhida))
     {
-        case 1:
-            MenuRegistrarBanda opcaoRegistrarBanda = new();
-            opcaoRegistrarBanda.Executar(bandasRegistradas);
-            ExibeOpcoesMenu();
-            break;
-        case 2:
-            MenuRegistrarAlbuns opcaoRegistrarAlbum = new();
-            opcaoRegistrarAlbum.Executar(bandasRegistradas);
-            ExibeOpcoesMenu();
-            break;
-        case 3:
-            MenuMostrarBandas opcaoMostraBandas = new();
-            opcaoMostraBandas.Executar(bandasRegistradas);
-            ExibeOpcoesMenu();
-            break;
-        case 4:
-            MenuAvaliarBanda opcaoAvaliarBanda = new();
-            opcaoAvaliarBanda.Executar(bandasRegistradas);
-            ExibeOpcoesMenu();
-            break;
-        case 5:
-            MenuExibirDetalhes opcaoExibirDetalhes = new();
-            opcaoExibirDetalhes.Executar(bandasRegistradas);
-            ExibeOpcoesMenu();
-            break;
-        case 0:
-            MenuSair opcaoSair = new();
-            opcaoSair.Executar();
-            break;
-        default:
-            MenuOpcaoInvalida opcaoInvalida = new();
-            opcaoInvalida.Executar();
-            break;
+        Menu MenuExibicao = opcoesMenu[opcaoEscolhida];
+        MenuExibicao.Executar(bandasRegistradas);
+        if(opcaoEscolhida > 0) ExibeOpcoesMenu();
+    }
+    else
+    {
+        MenuOpcaoInvalida opcaoInvalida = new();
+        opcaoInvalida.Executar();
     }
 }
 

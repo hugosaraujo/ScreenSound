@@ -4,7 +4,7 @@ namespace ScreenSound.Menus;
 
 internal class MenuMostrarBandas:Menu
 {
-    internal void Executar(Dictionary<string, Banda> bandasRegistradas)
+    internal override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
         Console.Clear();
         ExibirTituloOpcaoMenu("Exibindo bandas registradas");
@@ -12,7 +12,7 @@ internal class MenuMostrarBandas:Menu
         {
             Console.WriteLine($"Nome: {banda}");
         }
-        Console.Write("Pressione alguma tecla para sair");
+        Console.Write("Pressione alguma tecla para voltar para o Menu principal");
         Console.ReadKey();
         Console.Clear();
     }

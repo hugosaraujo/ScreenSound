@@ -4,9 +4,9 @@ namespace ScreenSound.Menus;
 
 internal class MenuRegistrarAlbuns:Menu
 {
-    internal void Executar(Dictionary<string, Banda> bandasRegistradas)
+    internal override void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
-        Console.Clear();
+        base.Executar(bandasRegistradas);
         ExibirTituloOpcaoMenu("Registrar Album");
         Console.Write("Digite o nome da banda: ");
         string nomeDaBanda = Console.ReadLine()!;
