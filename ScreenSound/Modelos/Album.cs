@@ -1,4 +1,6 @@
-﻿namespace ScreenSound.Modelos;
+﻿using ScreenSound.Interfaces;
+
+namespace ScreenSound.Modelos;
 
 internal class Album:IAvaliavel
 {
