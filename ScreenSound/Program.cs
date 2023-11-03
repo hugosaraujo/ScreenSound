@@ -62,8 +62,9 @@ void ExibeOpcoesMenu()
     }
     else
     {
-        MenuOpcaoInvalida opcaoInvalida = new();
-        opcaoInvalida.Executar();
+        Menu mensagemErro = new();
+        mensagemErro.OpcaoInvalida();
+        ExibeOpcoesMenu();
     }
 }
 

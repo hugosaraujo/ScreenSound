@@ -18,4 +18,12 @@ internal class Menu
     {
         Console.Clear();
     }
+
+    public void OpcaoInvalida()
+    {
+        Console.WriteLine("Opção Inválida!");
+        Console.WriteLine("Pressione qualquer tecla para voltar para o Menu Principal... ");
+        Console.ReadKey();
+        Console.Clear();
+    }
 }
