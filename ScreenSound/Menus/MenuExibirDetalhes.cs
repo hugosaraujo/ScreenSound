@@ -16,9 +16,11 @@ internal class MenuExibirDetalhes:Menu
             Console.WriteLine();
             Console.WriteLine($"A média da banda {nomeDaBanda} é {banda.Media}");
             Console.WriteLine($"Foram registrados {Album.QuantidadeAlbuns} albuns");
-            /**
-             * Espaço reservado para completar função
-             */
+            Console.WriteLine("Discografia: ");
+            foreach (Album album in banda.Albuns)
+            {
+                Console.WriteLine($"{album.Nome} -> {album.Media}");
+            }
             Console.Write("Digite alguma tecla para voltar para o menu principal... ");
             Console.ReadKey();
             Console.Clear();
