@@ -15,6 +15,12 @@ internal class MenuExibirDetalhes:Menu
             Banda banda = bandasRegistradas[nomeDaBanda];
             Console.WriteLine();
             Console.WriteLine($"A média da banda {nomeDaBanda} é {banda.Media}");
+            /**
+            *Criação de uma variável para fazer uma validação da informação; 
+            *Se a banda tiver mais de 1 album, o plural é adicionado
+            *Procurar por "C# ternary operator" na documentação do C#
+            *https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator
+            **/
             Console.WriteLine($"Foram registrados {Album.QuantidadeAlbuns} albuns");
             Console.WriteLine("Discografia: ");
             foreach (Album album in banda.Albuns)
