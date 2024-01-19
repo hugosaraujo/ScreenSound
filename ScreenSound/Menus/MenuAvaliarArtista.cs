@@ -14,9 +14,9 @@ internal class MenuAvaliarArtista:Menu
         {
             Artista artista = artistasRegistrados[nomeDoArtista];
             Console.Write("Digite a nota da banda: ");
-            Avaliacao notaDaBanda = Avaliacao.Parse(Console.ReadLine()!);
-            artista.AdicionarNota((notaDaBanda));
-            Console.WriteLine($"Registrando a nota {notaDaBanda.Nota}. A {nomeDoArtista} foi avaliado(a) com sucesso!");
+            Avaliacao notaArtista = Avaliacao.Parse(Console.ReadLine()!);
+            artista.AdicionarNota((notaArtista));
+            Console.WriteLine($"Registrando a nota {notaArtista.Nota}. A {nomeDoArtista} foi avaliado(a) com sucesso!");
         }
         else
         {

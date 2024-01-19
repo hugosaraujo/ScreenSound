@@ -14,7 +14,7 @@ internal class Menu
         Console.WriteLine();
     }
 
-    internal virtual void Executar(Dictionary<string, Artista> bandaRegistradas)
+    internal virtual void Executar(Dictionary<string, Artista> artistasRegistrados)
     {
         Console.Clear();
     }

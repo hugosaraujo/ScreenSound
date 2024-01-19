@@ -1,7 +1,7 @@
 ﻿using ScreenSound.Menus;
 using ScreenSound.Modelos;
 
-Artista braza = new Banda("Braza");
+Artista braza = new("Braza");
 braza.AdicionarNota(new Avaliacao (5));
 braza.AdicionarNota(new Avaliacao (9));
 braza.AdicionarNota(new Avaliacao (8));

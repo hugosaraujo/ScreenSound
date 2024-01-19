@@ -6,13 +6,13 @@ internal class Artista:IAvaliavel
 {
     private List<Album> albuns = new List<Album>();
     private List<Avaliacao> notas = new();
-    public Artista(string nome, string bio)
+    private string v;
+
+    public Artista(string nome)
     {
         Nome = nome;
-        Bio = bio;
     }
 
-    
     public string Nome { get; set; }
     public string FotoPerfil { get; set; }
     public string Bio { get; set; }

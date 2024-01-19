@@ -4,17 +4,17 @@ namespace ScreenSound.Menus;
 
 internal class MenuExibirDetalhes:Menu
 {
-    internal override void Executar(Dictionary<string, Artista> bandasRegistradas)
+    internal override void Executar(Dictionary<string, Artista> artistasRegistrados)
     {
-        base.Executar(bandasRegistradas);
+        base.Executar(artistasRegistrados);
         ExibirTituloOpcaoMenu("Exibir detalhes da banda");
         Console.Write("Digite o nome da banda que você quer saber os detalhes: ");
-        string nomeDaBanda = Console.ReadLine()!;
-        if (bandasRegistradas.ContainsKey(nomeDaBanda))
+        string nomeArtista = Console.ReadLine()!;
+        if (artistasRegistrados.ContainsKey(nomeArtista))
         {
-            Artista banda = bandasRegistradas[nomeDaBanda];
+            Artista banda = artistasRegistrados[nomeArtista];
             Console.WriteLine();
-            Console.WriteLine($"A média da banda {nomeDaBanda} é {banda.Media}");
+            Console.WriteLine($"A média da banda {nomeArtista} é {banda.Media}");
             /**
             *Criação de uma variável para fazer uma validação da informação; 
             *Se a banda tiver mais de 1 album, o plural é adicionado
@@ -34,7 +34,7 @@ internal class MenuExibirDetalhes:Menu
         else
         {
             Console.Clear();
-            Console.WriteLine($"A banda {nomeDaBanda} não foi encontrada!");
+            Console.WriteLine($"A banda {nomeArtista} não foi encontrada!");
             Console.WriteLine("Digite uma tecla para voltar ao menu principal");
             Console.ReadKey();
             Console.Clear();
