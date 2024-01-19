@@ -1,16 +1,16 @@
 ﻿using ScreenSound.Menus;
 using ScreenSound.Modelos;
 
-Artista braza = new("Braza");
+Artista braza = new("Braza", "Banda Braza");
 braza.AdicionarNota(new Avaliacao (5));
 braza.AdicionarNota(new Avaliacao (9));
 braza.AdicionarNota(new Avaliacao (8));
-Artista vacations = new("Vacations");
+Artista vacations = new("Vacations", "Banda Vacations");
 vacations.AdicionarNota(new Avaliacao(10));
 vacations.AdicionarNota(new Avaliacao(9));
 vacations.AdicionarNota(new Avaliacao(10));
 
-Dictionary<string, Artista> bandasRegistradas = new()
+Dictionary<string, Artista> artistasRegistrados = new()
 {
     { braza.Nome, braza },
     { vacations.Nome, vacations }
@@ -19,7 +19,7 @@ Dictionary<string, Artista> bandasRegistradas = new()
 Dictionary<int, Menu> opcoesMenu = new();
 opcoesMenu.Add(1, new MenuRegistrarArtista());
 opcoesMenu.Add(2, new MenuRegistrarAlbuns());
-opcoesMenu.Add(3, new MenuMostrarArtista());
+opcoesMenu.Add(3, new MenuMostrarArtistas());
 opcoesMenu.Add(4, new MenuAvaliarArtista());
 opcoesMenu.Add(5, new MenuAvaliarAlbum());
 opcoesMenu.Add(6, new MenuExibirDetalhes());
@@ -44,12 +44,12 @@ void ExibeOpcoesMenu()
 {
     ExibirBannerPrograma();
     Console.WriteLine();
-    Console.WriteLine("Digite 1 para registrar uma banda");
+    Console.WriteLine("Digite 1 para registrar um artista");
     Console.WriteLine("Digite 2 para registrar um álbum");
-    Console.WriteLine("Digite 3 para mostrar todas as bandas");
-    Console.WriteLine("Digite 4 para avaliar uma banda");
+    Console.WriteLine("Digite 3 para mostrar todos artistas");
+    Console.WriteLine("Digite 4 para avaliar um artista");
     Console.WriteLine("Digite 5 para avaliar um album");
-    Console.WriteLine("Digite 6 para exibir os detalhes de uma banda");
+    Console.WriteLine("Digite 6 para exibir os detalhes de um artista");
     Console.WriteLine("Digite 0 para sair do menu");
 
     Console.WriteLine();
@@ -59,7 +59,7 @@ void ExibeOpcoesMenu()
     if(opcoesMenu.ContainsKey(opcaoEscolhida))
     {
         Menu MenuExibicao = opcoesMenu[opcaoEscolhida];
-        MenuExibicao.Executar(bandasRegistradas);
+        MenuExibicao.Executar(artistasRegistrados);
         if(opcaoEscolhida > 0) ExibeOpcoesMenu();
     }
     else

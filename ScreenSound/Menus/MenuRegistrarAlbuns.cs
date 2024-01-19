@@ -8,7 +8,7 @@ internal class MenuRegistrarAlbuns:Menu
     {
         base.Executar(artistasRegistrados);
         ExibirTituloOpcaoMenu("Registrar Album");
-        Console.Write("Digite o nome da banda: ");
+        Console.Write("Digite o nome do artista: ");
         string nomeArtista = Console.ReadLine()!;
         if (artistasRegistrados.ContainsKey(nomeArtista))
         {
@@ -26,8 +26,8 @@ internal class MenuRegistrarAlbuns:Menu
         else
         {
             Console.Clear();
-            Console.WriteLine($"A banda {nomeArtista} não foi encontrada!");
-            Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+            Console.WriteLine($"{nomeArtista} não foi encontrada!");
+            Console.WriteLine("Digite qualquer tecla para voltar ao menu principal");
             Console.ReadKey();
             Console.Clear();
         }

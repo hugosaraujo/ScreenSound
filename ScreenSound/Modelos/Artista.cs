@@ -8,9 +8,10 @@ internal class Artista:IAvaliavel
     private List<Avaliacao> notas = new();
     private string v;
 
-    public Artista(string nome)
+    public Artista(string nome, string bio)
     {
         Nome = nome;
+        Bio = bio; 
     }
 
     public string Nome { get; set; }
