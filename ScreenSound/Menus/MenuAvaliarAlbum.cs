@@ -4,7 +4,7 @@ namespace ScreenSound.Menus;
 
 internal class MenuAvaliarAlbum:Menu
 {
-    internal override void Executar(Dictionary<string, Banda> bandasRegistradas)
+    internal override void Executar(Dictionary<string, Artista> bandasRegistradas)
     {
         base.Executar(bandasRegistradas);
         ExibirTituloOpcaoMenu("Avaliar Album");
@@ -12,7 +12,7 @@ internal class MenuAvaliarAlbum:Menu
         string nomeBanda = Console.ReadLine()!;
         if (bandasRegistradas.ContainsKey(nomeBanda))
         {
-            Banda banda = bandasRegistradas[nomeBanda];
+            Artista banda = bandasRegistradas[nomeBanda];
             Console.Write("Digite o nome do album que quer avaliar: ");
             string tituloAlbum = Console.ReadLine()!;
             if (banda.Albuns.Any(a => a.Nome.Equals(tituloAlbum)))

@@ -7,7 +7,7 @@ internal class Album:IAvaliavel
     private List<Musica> faixasDoAlbum = new List<Musica>();
     private List<Avaliacao> notas = new();
  
-    public Album(Banda artista, string nome)
+    public Album(Artista artista, string nome)
     {
         Artista = artista;
         Nome = nome;
@@ -15,7 +15,7 @@ internal class Album:IAvaliavel
     }
 
     public string Nome { get; }
-    public Banda Artista { get; }
+    public Artista Artista { get; }
     public int DuracaoTotal => faixasDoAlbum.Sum(faixa => faixa.Duracao);
     public int AnoLancamento { get; set; }
     //posso usar o ano de lançamento para organizar os albuns por ordem cronológica

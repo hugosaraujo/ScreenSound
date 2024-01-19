@@ -3,14 +3,15 @@ using System.Reflection.Metadata.Ecma335;
 
 internal class Musica
 {
-    public Musica(Banda artista, string nome)
+    //Implementação de material do curso 4, Linq, nessa classe. 
+    public Musica(Artista artista, string nome)
     {
         Artista = artista;
         Nome = nome;
     }
 
     public string Nome { get; }
-    public Banda Artista { get; }
+    public Artista Artista { get; }
     public int Duracao { get; set; }
     public bool Disponibilidade { get; set; }
     

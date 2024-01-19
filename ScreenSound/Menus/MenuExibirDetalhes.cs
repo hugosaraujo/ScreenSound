@@ -4,7 +4,7 @@ namespace ScreenSound.Menus;
 
 internal class MenuExibirDetalhes:Menu
 {
-    internal override void Executar(Dictionary<string, Banda> bandasRegistradas)
+    internal override void Executar(Dictionary<string, Artista> bandasRegistradas)
     {
         base.Executar(bandasRegistradas);
         ExibirTituloOpcaoMenu("Exibir detalhes da banda");
@@ -12,7 +12,7 @@ internal class MenuExibirDetalhes:Menu
         string nomeDaBanda = Console.ReadLine()!;
         if (bandasRegistradas.ContainsKey(nomeDaBanda))
         {
-            Banda banda = bandasRegistradas[nomeDaBanda];
+            Artista banda = bandasRegistradas[nomeDaBanda];
             Console.WriteLine();
             Console.WriteLine($"A média da banda {nomeDaBanda} é {banda.Media}");
             /**

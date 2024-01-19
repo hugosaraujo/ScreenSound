@@ -2,17 +2,22 @@
 
 namespace ScreenSound.Modelos;
 
-internal class Banda:IAvaliavel
+internal class Artista:IAvaliavel
 {
     private List<Album> albuns = new List<Album>();
     private List<Avaliacao> notas = new();
-    public Banda(string nome)
+    public Artista(string nome, string bio)
     {
         Nome = nome;
+        Bio = bio;
     }
 
     
-    public string Nome { get; }
+    public string Nome { get; set; }
+    public string FotoPerfil { get; set; }
+    public string Bio { get; set; }
+    public int Id { get; set; }
+    public IEnumerable<Album> Albuns => albuns;
     public double Media
     {
         get
@@ -21,7 +26,7 @@ internal class Banda:IAvaliavel
             else return notas.Average(avaliacao => avaliacao.Nota);
         }
     }
-    public IEnumerable<Album> Albuns => albuns;
+    
 
 
     public void AdicionarAlbum(Album album)

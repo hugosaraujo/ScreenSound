@@ -2,15 +2,15 @@
 
 namespace ScreenSound.Menus;
 
-internal class MenuMostrarBandas:Menu
+internal class MenuMostrarArtista:Menu
 {
-    internal override void Executar(Dictionary<string, Banda> bandasRegistradas)
+    internal override void Executar(Dictionary<string, Artista> artistasRegistrados)
     {
         Console.Clear();
         ExibirTituloOpcaoMenu("Exibindo bandas registradas");
-        foreach (string banda in bandasRegistradas.Keys)
+        foreach (string artista in artistasRegistrados.Keys)
         {
-            Console.WriteLine($"Nome: {banda}");
+            Console.WriteLine($"Nome: {artista}");
         }
         Console.Write("Pressione alguma tecla para voltar para o Menu principal");
         Console.ReadKey();
