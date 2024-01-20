@@ -29,8 +29,6 @@ internal class Artista:IAvaliavel
         }
     }
     
-
-
     public void AdicionarAlbum(Album album)
     {
         albuns.Add(album);
@@ -63,5 +61,14 @@ internal class Artista:IAvaliavel
         {
             Console.WriteLine($"Musica: {musica.Nome}");
         }
+    }
+
+    public override string ToString()
+    {
+        //esse método faz com que seja mostrado 
+        return $@"Id: {Id}
+            Nome: {Nome}
+            Foto de Perfil: {FotoPerfil}
+            Bio: {Bio}";
     }
 }
