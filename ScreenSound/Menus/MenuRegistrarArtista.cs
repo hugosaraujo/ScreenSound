@@ -10,7 +10,7 @@ internal class MenuRegistrarArtista:Menu
         ExibirTituloOpcaoMenu("Resgitro de artista");
         Console.Write("Digite o nome da artista que queira registrar: ");
         string nomeArtista = Console.ReadLine()!;
-        Console.WriteLine("Digite uma breve resumo da biografia da banda");
+        Console.Write("Digite uma breve resumo da biografia da banda: ");
         string bioArtista = Console.ReadLine()!;
         Artista artista = new(nomeArtista, bioArtista);
         artistaRegistrados.Add(nomeArtista, artista);

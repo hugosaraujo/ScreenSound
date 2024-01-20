@@ -6,7 +6,7 @@ internal class MenuMostrarArtistas:Menu
 {
     internal override void Executar(Dictionary<string, Artista> artistasRegistrados)
     {
-        Console.Clear();
+        base.Executar(artistasRegistrados);
         ExibirTituloOpcaoMenu("Exibindo artistas registradas");
         foreach (var artista in artistasRegistrados.Keys)
         {

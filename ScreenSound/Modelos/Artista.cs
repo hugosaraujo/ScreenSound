@@ -1,4 +1,5 @@
 ﻿using ScreenSound.Interfaces;
+using ScreenSound.Menus;
 
 namespace ScreenSound.Modelos;
 
@@ -6,7 +7,7 @@ internal class Artista:IAvaliavel
 {
     private List<Album> albuns = new List<Album>();
     private List<Avaliacao> notas = new();
-    private string v;
+    private List<Musica> musicas = new(); 
 
     public Artista(string nome, string bio)
     {
@@ -48,5 +49,19 @@ internal class Artista:IAvaliavel
     public void AdicionarNota(Avaliacao nota)
     {
         notas.Add(nota);
+    }
+
+    public void AdicionarMusica(Musica musica) 
+    {
+        musicas.Add(musica);
+    }
+    public void ExibirMusicas()
+    {
+        Console.WriteLine($"Musicas do artista {Nome}");
+        Console.WriteLine();
+        foreach (var musica in musicas)
+        {
+            Console.WriteLine($"Musica: {musica.Nome}");
+        }
     }
 }

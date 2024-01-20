@@ -1,5 +1,19 @@
-﻿using ScreenSound.Menus;
+﻿using ScreenSound.BancoDeDados;
+using ScreenSound.Menus;
 using ScreenSound.Modelos;
+
+try
+{
+    using var conexao = new Connection().ObterConexao();
+    conexao.Open();
+    Console.WriteLine(conexao.State);
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+return; 
 
 Artista braza = new("Braza", "Banda Braza");
 braza.AdicionarNota(new Avaliacao (5));
@@ -19,10 +33,12 @@ Dictionary<string, Artista> artistasRegistrados = new()
 Dictionary<int, Menu> opcoesMenu = new();
 opcoesMenu.Add(1, new MenuRegistrarArtista());
 opcoesMenu.Add(2, new MenuRegistrarAlbuns());
-opcoesMenu.Add(3, new MenuMostrarArtistas());
-opcoesMenu.Add(4, new MenuAvaliarArtista());
-opcoesMenu.Add(5, new MenuAvaliarAlbum());
-opcoesMenu.Add(6, new MenuExibirDetalhes());
+opcoesMenu.Add(3, new MenuRegistrarMusica());
+opcoesMenu.Add(4, new MenuMostrarArtistas());
+opcoesMenu.Add(5, new MenuMostrarMusicas());
+opcoesMenu.Add(6, new MenuAvaliarArtista());
+opcoesMenu.Add(7, new MenuAvaliarAlbum());
+opcoesMenu.Add(8, new MenuExibirDetalhes());
 opcoesMenu.Add(0, new MenuSair());
 
 
@@ -46,10 +62,12 @@ void ExibeOpcoesMenu()
     Console.WriteLine();
     Console.WriteLine("Digite 1 para registrar um artista");
     Console.WriteLine("Digite 2 para registrar um álbum");
-    Console.WriteLine("Digite 3 para mostrar todos artistas");
-    Console.WriteLine("Digite 4 para avaliar um artista");
-    Console.WriteLine("Digite 5 para avaliar um album");
-    Console.WriteLine("Digite 6 para exibir os detalhes de um artista");
+    Console.WriteLine("Digite 3 para registrar musica");
+    Console.WriteLine("Digite 4 para mostrar todos artistas");
+    Console.WriteLine("Digite 5 para mostrar musicas");
+    Console.WriteLine("Digite 6 para avaliar um artista");
+    Console.WriteLine("Digite 7 para avaliar um album");
+    Console.WriteLine("Digite 8 para exibir os detalhes de um artista");
     Console.WriteLine("Digite 0 para sair do menu");
 
     Console.WriteLine();
