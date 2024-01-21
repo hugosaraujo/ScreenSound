@@ -4,8 +4,10 @@ using ScreenSound.Modelos;
 
 try
 {
-    var conexao = new Connection();
-    var listaDeArtistas = conexao.Listar();
+    var artistaDal = new ArtistaDAL();
+    artistaDal.Adicionar(new Artista("David Bowie", "David Bowie é simplesmente o camaleão do rock. Imagine um artista que não apenas define gêneros, mas os recria."));
+
+    var listaDeArtistas = artistaDal.Listar();
 
     foreach (var artista in listaDeArtistas)
     {
