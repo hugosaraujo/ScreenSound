@@ -34,6 +34,7 @@ namespace ScreenSound.BancoDeDados
                 lista.Add(artista);
             }
             return lista;
+            conexao.Close();
         }
 
         public void Adicionar(Artista artista)
@@ -50,6 +51,39 @@ namespace ScreenSound.BancoDeDados
 
             int retorno = comando.ExecuteNonQuery();
             Console.WriteLine($"Linhas afetadas: {retorno}");
+            conexao.Close();
+        }
+
+        public void Atualizar(Artista artista)
+        {
+            using var conexao = new Connection().ObterConexao();
+            conexao.Open();
+
+            string sql = "UPDATE Artistas SET Nome = @nome, Bio = @bio WHERE Id = @id";
+            SqlCommand comando = new SqlCommand(sql, conexao);
+
+            comando.Parameters.AddWithValue("@nome", artista.Nome);
+            comando.Parameters.AddWithValue("@bio", artista.Bio);
+            comando.Parameters.AddWithValue("@id", artista.Id);
+
+            int retorno = comando.ExecuteNonQuery();
+            Console.WriteLine($"Linhas Atualizadas: {retorno}");
+            conexao.Close();
+        }
+
+        public void Deletar(Artista artista)
+        {
+            using var conexao = new Connection().ObterConexao();
+            conexao.Open();
+
+            string sql = "DELETE FROM Artistas WHERE Id = @id";
+            SqlCommand comando = new SqlCommand(sql, conexao);
+
+            comando.Parameters.AddWithValue("@id", artista.Id);
+
+            int retorno = comando.ExecuteNonQuery();
+            Console.WriteLine($"Linhas Atualizadas: {retorno}");
+            conexao.Close();
         }
     }
 }

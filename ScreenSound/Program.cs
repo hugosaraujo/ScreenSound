@@ -1,11 +1,15 @@
 ﻿using ScreenSound.BancoDeDados;
 using ScreenSound.Menus;
 using ScreenSound.Modelos;
+using System.Net.NetworkInformation;
 
 try
 {
     var artistaDal = new ArtistaDAL();
-    artistaDal.Adicionar(new Artista("David Bowie", "David Bowie é simplesmente o camaleão do rock. Imagine um artista que não apenas define gêneros, mas os recria."));
+    artistaDal.Deletar(new Artista()
+    {
+        Id = 3002,
+    });
 
     var listaDeArtistas = artistaDal.Listar();
 
@@ -19,12 +23,12 @@ catch (Exception ex)
     Console.WriteLine(ex.Message);
 }
 
-return; 
+return;
 
 Artista braza = new("Braza", "Banda Braza");
-braza.AdicionarNota(new Avaliacao (5));
-braza.AdicionarNota(new Avaliacao (9));
-braza.AdicionarNota(new Avaliacao (8));
+braza.AdicionarNota(new Avaliacao(5));
+braza.AdicionarNota(new Avaliacao(9));
+braza.AdicionarNota(new Avaliacao(8));
 Artista vacations = new("Vacations", "Banda Vacations");
 vacations.AdicionarNota(new Avaliacao(10));
 vacations.AdicionarNota(new Avaliacao(9));
@@ -80,11 +84,11 @@ void ExibeOpcoesMenu()
     Console.Write("Digite a sua opção: ");
     int opcaoEscolhida = int.Parse(Console.ReadLine()!);
 
-    if(opcoesMenu.ContainsKey(opcaoEscolhida))
+    if (opcoesMenu.ContainsKey(opcaoEscolhida))
     {
         Menu MenuExibicao = opcoesMenu[opcaoEscolhida];
         MenuExibicao.Executar(artistasRegistrados);
-        if(opcaoEscolhida > 0) ExibeOpcoesMenu();
+        if (opcaoEscolhida > 0) ExibeOpcoesMenu();
     }
     else
     {
