@@ -2,8 +2,13 @@
  * 1 - Criar uma função para exibir mensagem ao entrar na opção;
  */
 
+int opcaoEscolhida = -1;
 exibirBanner();
-MenuDeOpcoes();
+while (opcaoEscolhida != 0)
+{
+    MenuDeOpcoes();
+}
+
 
 void exibirBanner()
 {
@@ -32,7 +37,7 @@ void MenuDeOpcoes()
     Console.WriteLine("Digite 0 para fechar a aplicação");
 
     Console.Write("Selecione uma da opções disponíveis: ");
-    int opcaoEscolhida = int.Parse(Console.ReadLine()!);
+    opcaoEscolhida = int.Parse(Console.ReadLine()!);
 
     switch(opcaoEscolhida)
     {
