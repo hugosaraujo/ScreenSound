@@ -1,12 +1,10 @@
-﻿/*
- * 1 - Criar uma função para exibir mensagem ao entrar na opção;
- */
+﻿int opcaoEscolhida = -1;
 
-int opcaoEscolhida = -1;
-exibirBanner();
+List<string> listaDeArtistas = new List<string>();
+
 while (opcaoEscolhida != 0)
 {
-    MenuDeOpcoes();
+    exibirMenuDeOpcoes();
 }
 
 
@@ -28,8 +26,10 @@ void exibirBanner()
 
 }
 
-void MenuDeOpcoes()
+void exibirMenuDeOpcoes()
 {
+    exibirBanner();
+
     Console.WriteLine("Digite 1 para registrar uma banda ou artista");
     Console.WriteLine("Digite 2 para mostrar artistas registrados");
     Console.WriteLine("Digite 3 para avaliar uma banda");
@@ -42,7 +42,7 @@ void MenuDeOpcoes()
     switch(opcaoEscolhida)
     {
         case 1: 
-            exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+            registrarBanda();
             break;
         case 2:
             exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
@@ -55,7 +55,7 @@ void MenuDeOpcoes()
             break;
         case 0:
             exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
-            break; Console.WriteLine("Encerrando a aplicação!!!");
+            Console.WriteLine("Encerrando a aplicação!!!");
             break;
         default: Console.WriteLine("Você selecionou uma opção inválida");
             break;
@@ -65,4 +65,17 @@ void MenuDeOpcoes()
 void exibirMensagemDaOpcaoSelecionada(int opcao)
 {
     Console.WriteLine($"Você selecionou a opção {opcao}");
+}
+
+void registrarBanda()
+{
+    Console.Clear();
+    exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+    Console.Write("Digite do nome do Artista: ");
+    string artista = Console.ReadLine()!;
+    listaDeArtistas.Add(artista);
+    Console.WriteLine($"{artista} registrado com sucesso!!!");
+    Thread.Sleep(2000);
+    Console.Clear();
+    exibirMenuDeOpcoes();
 }
