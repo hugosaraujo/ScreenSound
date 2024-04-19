@@ -1,6 +1,6 @@
 ﻿int opcaoEscolhida = -1;
 
-List<string> listaDeArtistas = new List<string>();
+List<string> listaDeArtistas = new List<string> { "Silk Sonic!", "Thundercat", "Fleetwood Mac" };
 
 while (opcaoEscolhida != 0)
 {
@@ -42,10 +42,10 @@ void exibirMenuDeOpcoes()
     switch(opcaoEscolhida)
     {
         case 1: 
-            registrarBanda();
+            registrarArtista();
             break;
         case 2:
-            exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+            mostrarArtistas();
             break;
         case 3:
             exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
@@ -67,7 +67,7 @@ void exibirMensagemDaOpcaoSelecionada(int opcao)
     Console.WriteLine($"Você selecionou a opção {opcao}");
 }
 
-void registrarBanda()
+void registrarArtista()
 {
     Console.Clear();
     exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
@@ -76,6 +76,20 @@ void registrarBanda()
     listaDeArtistas.Add(artista);
     Console.WriteLine($"{artista} registrado com sucesso!!!");
     Thread.Sleep(2000);
+    Console.Clear();
+    exibirMenuDeOpcoes();
+}
+
+void mostrarArtistas()
+{
+    Console.Clear();
+    exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+    foreach(var artista in listaDeArtistas)
+    {
+        Console.WriteLine(artista);
+    }
+    Console.Write("Pressione qualquer tecla para retornar para o menu principal: ");
+    Console.ReadKey();
     Console.Clear();
     exibirMenuDeOpcoes();
 }
