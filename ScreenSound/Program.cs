@@ -4,8 +4,9 @@ List<string> listaDeArtistas = new List<string> { "Silk Sonic!", "Thundercat", "
 
 while (opcaoEscolhida != 0)
 {
-    exibirMenuDeOpcoes();
+    ExibirMenuDeOpcoes();
 }
+
 
 
 void exibirBanner()
@@ -26,7 +27,7 @@ void exibirBanner()
 
 }
 
-void exibirMenuDeOpcoes()
+void ExibirMenuDeOpcoes()
 {
     exibirBanner();
 
@@ -42,19 +43,19 @@ void exibirMenuDeOpcoes()
     switch(opcaoEscolhida)
     {
         case 1: 
-            registrarArtista();
+            RegistrarArtista();
             break;
         case 2:
-            mostrarArtistas();
+            MostrarArtistas();
             break;
         case 3:
-            exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+            ExibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
             break;
         case 4:
-            exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+            ExibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
             break;
         case 0:
-            exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+            ExibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
             Console.WriteLine("Encerrando a aplicação!!!");
             break;
         default: Console.WriteLine("Você selecionou uma opção inválida");
@@ -62,28 +63,28 @@ void exibirMenuDeOpcoes()
     }
 }
 
-void exibirMensagemDaOpcaoSelecionada(int opcao)
+void ExibirMensagemDaOpcaoSelecionada(int opcao)
 {
     Console.WriteLine($"Você selecionou a opção {opcao}");
 }
 
-void registrarArtista()
+void RegistrarArtista()
 {
     Console.Clear();
-    exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+    ExibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
     Console.Write("Digite do nome do Artista: ");
     string artista = Console.ReadLine()!;
     listaDeArtistas.Add(artista);
     Console.WriteLine($"{artista} registrado com sucesso!!!");
     Thread.Sleep(2000);
     Console.Clear();
-    exibirMenuDeOpcoes();
+    ExibirMenuDeOpcoes();
 }
 
-void mostrarArtistas()
+void MostrarArtistas()
 {
     Console.Clear();
-    exibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+    ExibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
     foreach(var artista in listaDeArtistas)
     {
         Console.WriteLine(artista);
@@ -91,5 +92,6 @@ void mostrarArtistas()
     Console.Write("Pressione qualquer tecla para retornar para o menu principal: ");
     Console.ReadKey();
     Console.Clear();
-    exibirMenuDeOpcoes();
+    ExibirMenuDeOpcoes();
 }
+
