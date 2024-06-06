@@ -35,11 +35,11 @@ void ExibirMenuDeOpcoes()
     Console.WriteLine("Digite 2 para mostrar artistas registrados");
     Console.WriteLine("Digite 3 para avaliar uma banda");
     Console.WriteLine("Digite 4 para exibir a média da banda");
-    Console.WriteLine("Digite 0 para fechar a aplicação");
+    Console.WriteLine("Digite 0 para fechar a aplicação\n");
 
     Console.Write("Selecione uma da opções disponíveis: ");
     opcaoEscolhida = int.Parse(Console.ReadLine()!);
-
+    
     switch(opcaoEscolhida)
     {
         case 1: 
@@ -49,13 +49,17 @@ void ExibirMenuDeOpcoes()
             MostrarArtistas();
             break;
         case 3:
-            ExibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+            ExibirTituloOpcao(opcaoEscolhida);
+            Thread.Sleep(2000);
+            Console.Clear();
             break;
         case 4:
-            ExibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+            ExibirTituloOpcao(opcaoEscolhida);
+            Thread.Sleep(2000);
+            Console.Clear();
             break;
         case 0:
-            ExibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+            ExibirTituloOpcao(opcaoEscolhida);
             Console.WriteLine("Encerrando a aplicação!!!");
             break;
         default: Console.WriteLine("Você selecionou uma opção inválida");
@@ -63,19 +67,31 @@ void ExibirMenuDeOpcoes()
     }
 }
 
-void ExibirMensagemDaOpcaoSelecionada(int opcao)
+void ExibirTituloOpcao(int titulo)
 {
-    Console.WriteLine($"Você selecionou a opção {opcao}");
+    
+    Console.WriteLine($"Você selecionou a opção {titulo}");
+}
+
+void ExibirTitulo(string titulo)
+{
+    int tamanhoTitulo = titulo.Length;
+    string asteriscos = new string('*', tamanhoTitulo + 2);
+    
+    Console.WriteLine(asteriscos);
+    Console.WriteLine($"*{titulo}*");
+    Console.WriteLine(asteriscos);
+    Console.WriteLine();
 }
 
 void RegistrarArtista()
 {
     Console.Clear();
-    ExibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+    ExibirTitulo("Registrar Artista");
     Console.Write("Digite do nome do Artista: ");
     string artista = Console.ReadLine()!;
     listaDeArtistas.Add(artista);
-    Console.WriteLine($"{artista} registrado com sucesso!!!");
+    Console.WriteLine($"\n{artista} registrado com sucesso!!!");
     Thread.Sleep(2000);
     Console.Clear();
     ExibirMenuDeOpcoes();
@@ -84,11 +100,12 @@ void RegistrarArtista()
 void MostrarArtistas()
 {
     Console.Clear();
-    ExibirMensagemDaOpcaoSelecionada(opcaoEscolhida);
+    ExibirTitulo("Exibir Artistas Registrados");
     foreach(var artista in listaDeArtistas)
     {
         Console.WriteLine(artista);
     }
+    Console.WriteLine();
     Console.Write("Pressione qualquer tecla para retornar para o menu principal: ");
     Console.ReadKey();
     Console.Clear();
