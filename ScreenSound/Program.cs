@@ -1,6 +1,9 @@
-﻿int opcaoEscolhida = -1;
+﻿using System.Net.NetworkInformation;
 
-List<string> listaDeArtistas = new List<string> { "Silk Sonic!", "Thundercat", "Fleetwood Mac" };
+int opcaoEscolhida = -1;
+
+//List<string> listaDeArtistas = new List<string> { "Silk Sonic!", "Thundercat", "Fleetwood Mac" };
+Dictionary<string, List<int>> listaDeArtistas = new Dictionary<string, List<int>>();
 
 while (opcaoEscolhida != 0)
 {
@@ -49,9 +52,7 @@ void ExibirMenuDeOpcoes()
             MostrarArtistas();
             break;
         case 3:
-            ExibirTituloOpcao(opcaoEscolhida);
-            Thread.Sleep(2000);
-            Console.Clear();
+            AvaliarArtista();
             break;
         case 4:
             ExibirTituloOpcao(opcaoEscolhida);
@@ -90,18 +91,17 @@ void RegistrarArtista()
     ExibirTitulo("Registrar Artista");
     Console.Write("Digite do nome do Artista: ");
     string artista = Console.ReadLine()!;
-    listaDeArtistas.Add(artista);
-    Console.WriteLine($"\n{artista} registrado com sucesso!!!");
+    listaDeArtistas.Add(artista, new List<int>());
+    Console.WriteLine($"\n{artista} foi registrado com sucesso!!!");
     Thread.Sleep(2000);
     Console.Clear();
-    ExibirMenuDeOpcoes();
 }
 
 void MostrarArtistas()
 {
     Console.Clear();
     ExibirTitulo("Exibir Artistas Registrados");
-    foreach(var artista in listaDeArtistas)
+    foreach(var artista in listaDeArtistas.Keys)
     {
         Console.WriteLine(artista);
     }
@@ -109,6 +109,29 @@ void MostrarArtistas()
     Console.Write("Pressione qualquer tecla para retornar para o menu principal: ");
     Console.ReadKey();
     Console.Clear();
-    ExibirMenuDeOpcoes();
+}
+
+void AvaliarArtista()
+{
+    Console.Clear();
+    ExibirTitulo("Avaliar Artista");
+    Console.Write("Digite o nome do Artista: ");
+    string artista = Console.ReadLine()!;
+    if(listaDeArtistas.ContainsKey(artista))
+    {
+        Console.Write("Digite a nota do Artista: ");
+        int avaliacao = int.Parse(Console.ReadLine()!);
+        listaDeArtistas[artista].Add(avaliacao);
+        Console.WriteLine($"\nVocê avaliou {artista} com a nota {avaliacao}!!!");
+
+    }
+    else
+    {
+        Console.WriteLine("\nArtista não encontrado!!!");
+    }
+    Console.WriteLine();
+    Console.Write("Pressione qulaquer tecla para retornar para o menu principal: ");
+    Console.ReadKey();
+    Console.Clear();
 }
 
