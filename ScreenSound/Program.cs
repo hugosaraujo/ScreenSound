@@ -3,13 +3,22 @@
 int opcaoEscolhida = -1;
 
 //List<string> listaDeArtistas = new List<string> { "Silk Sonic!", "Thundercat", "Fleetwood Mac" };
-Dictionary<string, List<int>> listaDeArtistas = new Dictionary<string, List<int>>();
+Dictionary<string, List<int>> listaDeArtistas = new Dictionary<string, List<int>>()
+{
+    {"Soccer Mommy", new List<int>{10, 8, 6, 8} },
+    {"Fleetwood Mac", new List<int>{10, 9, 6, 8} },
+    {"Thundercat", new List<int>{10, 8, 6, 8} },
+    {"Silk Sonic", new List<int>{10, 8, 6, 8} },
+    {"The Beatles", new List<int>{10, 8, 4, 6} },
+    {"The Rolling Stones", new List<int>{10, 8, 6, 8} },
+    {"The Who", new List<int>{10, 8, 6, 8} },
+    {"The Doors", new List<int>{10, 8, 6, 8} }
+};
 
 while (opcaoEscolhida != 0)
 {
     ExibirMenuDeOpcoes();
-}
-
+};
 
 
 void exibirBanner()
@@ -55,15 +64,13 @@ void ExibirMenuDeOpcoes()
             AvaliarArtista();
             break;
         case 4:
-            ExibirTituloOpcao(opcaoEscolhida);
-            Thread.Sleep(2000);
-            Console.Clear();
+            ExibirMedia();
             break;
         case 0:
-            ExibirTituloOpcao(opcaoEscolhida);
-            Console.WriteLine("Encerrando a aplicação!!!");
+            FecharAplicacao();
             break;
-        default: Console.WriteLine("Você selecionou uma opção inválida");
+        default:
+            ExibirOpcaoInvalida();
             break;
     }
 }
@@ -123,7 +130,6 @@ void AvaliarArtista()
         int avaliacao = int.Parse(Console.ReadLine()!);
         listaDeArtistas[artista].Add(avaliacao);
         Console.WriteLine($"\nVocê avaliou {artista} com a nota {avaliacao}!!!");
-
     }
     else
     {
@@ -135,3 +141,41 @@ void AvaliarArtista()
     Console.Clear();
 }
 
+void ExibirMedia()
+{
+    Console.Clear();
+    ExibirTitulo("Exibir Média do Artista");
+    Console.Write("Digite o nome do Artista: ");
+    string artist = Console.ReadLine()!;
+    if(listaDeArtistas.ContainsKey(artist))
+    {
+        List<int> avaliacoes = listaDeArtistas[artist];
+        double media = avaliacoes.Average();
+        Console.WriteLine($"\n{artist} tem uma média de {media} avaliações");
+    }
+    else
+    {
+        Console.WriteLine("\nArtista não encontrado!!!");
+    }
+    Console.WriteLine();
+    Console.Write("Pressione qualquer tecla para retornar para o menu principal: ");
+    Console.ReadKey();
+    Console.Clear();
+}
+
+void FecharAplicacao()
+{
+    Console.Clear();
+    Console.WriteLine("Fechando a aplicação...");
+    Thread.Sleep(2000);
+    Console.WriteLine("\nTchau Tchau!!");
+}
+
+void ExibirOpcaoInvalida()
+{
+    Console.Clear();
+    ExibirTitulo("Você selecionou uma opção inválida.");
+    Console.Write("Pressione qualquer tecla para voltar para o Menu Principal");
+    Console.ReadKey();
+    Console.Clear();
+}
