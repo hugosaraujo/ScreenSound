@@ -1,13 +1,13 @@
 ﻿using ScreenSound.Modelos;
 
 Musica musica = new Musica();
-musica.faixa = "Karma Police";
-musica.artista = "RadioHead";
+musica.Faixa = "Karma Police";
+musica.Artista = "RadioHead";
 
-musica.ExibirFichaTecnica();
+Console.WriteLine(musica.Descricao); ;
 
 Musica ps = new Musica();
-ps.faixa = "Police Station";
-ps.artista = "Red Hot Chili Peppers";
+ps.Faixa = "Police Station";
+ps.Artista = "Red Hot Chili Peppers";
 
-ps.ExibirFichaTecnica();
+Console.WriteLine(ps.Descricao);

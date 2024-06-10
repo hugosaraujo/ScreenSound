@@ -3,14 +3,18 @@
 namespace ScreenSound.Modelos;
 public class Musica
 {
-    public string faixa;
-    public string artista;
-    public int duracaoEmSegundos;
-    public bool disponívelNoPlano;
+
+    public string Faixa { get; set;}
+    public string Artista { get; set; }
+    public int DuracaoEmSegundos { get; set;}
+    public bool DisponívelNoPlano { get; set; }
+    public string Descricao => $"{Faixa} By {Artista}";
 
     public void ExibirFichaTecnica()
     {
-        Console.WriteLine($"Titulo: {faixa} - Artista: {artista}");
+        Console.WriteLine($"Titulo: {Faixa}");
+        Console.WriteLine($"Artista: {Artista}");
+        Console.WriteLine($"Duração: {DuracaoEmSegundos}");
     }
 
 }
