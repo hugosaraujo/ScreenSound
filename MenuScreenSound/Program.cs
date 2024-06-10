@@ -74,12 +74,6 @@ void ExibirMenuDeOpcoes()
     }
 }
 
-void ExibirTituloOpcao(int titulo)
-{
-
-    Console.WriteLine($"Você selecionou a opção {titulo}");
-}
-
 void ExibirTitulo(string titulo)
 {
     int tamanhoTitulo = titulo.Length;
@@ -107,7 +101,7 @@ void MostrarArtistas()
 {
     Console.Clear();
     ExibirTitulo("Exibir Artistas Registrados");
-    foreach (var artista in listaDeArtistas.Keys)
+    foreach (var artista in listaDeArtistas.Keys) 
     {
         Console.WriteLine(artista);
     }
