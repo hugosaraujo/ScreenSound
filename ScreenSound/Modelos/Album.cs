@@ -10,7 +10,8 @@ public class Album
     }
     public string Nome { get; }
     public List<Genero> Generos { get; set; } = new();
-    public int DuracaoTotal => _faixas.Sum(musica => musica.DuracaoEmSegundos);
+    public double DuracaoTotal => _faixas.Sum(musica => musica.DuracaoEmSegundos / 60);
+    public int DuracaoTotalMinutos => (int)Math.Ceiling(DuracaoTotal);
 
     public void AdcionarFaixa(Musica musica)
     {
@@ -20,7 +21,7 @@ public class Album
     public void ExibirFichaTecnica()
     {
         Console.WriteLine($"Album: {Nome}");
-        Console.WriteLine($"Duracao: {DuracaoTotal}\n");    
+        Console.WriteLine($"Duracao: {DuracaoTotalMinutos} minutos\n");    
         foreach (var musica in _faixas)
         {
             Console.WriteLine($"Musica - {musica.Faixa}");

@@ -16,7 +16,6 @@ Album okComputer = new Album("Ok Computer");
 
 
 Musica karmaPolice = new Musica("Karma Police", radiohead);
-karmaPolice.Faixa = "Karma Police";
 karmaPolice.DuracaoEmSegundos = 261;
 
 Musica paranoidAndroid = new Musica("Paranoid Android", radiohead);
