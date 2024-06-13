@@ -4,6 +4,7 @@ public class Album
 {
     private List<Musica> _faixas = new List<Musica>();
     public string Nome { get; set; }
+    public List<Genero> Generos { get; set; } = new();
     public int DuracaoTotal => _faixas.Sum(musica => musica.DuracaoEmSegundos);
 
     public void AdcionarFaixa(Musica musica)

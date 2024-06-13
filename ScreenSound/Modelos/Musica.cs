@@ -8,6 +8,7 @@ public class Musica
     public string Artista { get; set; }
     public int DuracaoEmSegundos { get; set;}
     public bool DisponívelNoPlano { get; set; }
+    public Genero GeneroMusical { get; set; }
     public string Descricao => $"{Faixa} By {Artista}";
 
     public void ExibirFichaTecnica()
