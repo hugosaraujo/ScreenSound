@@ -1,20 +1,29 @@
 ﻿using ScreenSound.Modelos;
 
-Album okComputer = new Album();
-okComputer.Nome = "Ok Computer";
+Artista weezer = new("Weezer");
+
+Album blue = new("Weezer(Blue Album)");
+
+Album green = new("Weezer(Green Album)");
+
+weezer.AdicionarAlbum(blue);
+weezer.AdicionarAlbum(green);
+weezer.ExibeFichaTecnica();
+
+Artista radiohead = new("Radiohead");
+
+Album okComputer = new Album("Ok Computer");
 
 
-Musica karmaPolice = new Musica();
+Musica karmaPolice = new Musica("Karma Police", radiohead);
 karmaPolice.Faixa = "Karma Police";
 karmaPolice.DuracaoEmSegundos = 261;
 
-Musica paranoidAndroid = new Musica();
-paranoidAndroid.Faixa = "Paranoid Android";
+Musica paranoidAndroid = new Musica("Paranoid Android", radiohead);
 paranoidAndroid.DuracaoEmSegundos = 383;
 
-Musica airbag = new Musica()
+Musica airbag = new Musica("Airbag", radiohead)
 {
-    Faixa = "Airbag",
     DuracaoEmSegundos = 264
 };
 
