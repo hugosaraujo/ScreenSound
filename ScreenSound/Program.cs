@@ -1,4 +1,5 @@
 ﻿using ScreenSound.Modelos;
+using ScreenSound.Modelos.Podcast;
 
 Artista radiohead = new("Radiohead");
 
@@ -23,11 +24,20 @@ Artista chiclete = new Artista("Chiclete com Banana");
 Musica selvaBranca = new Musica("Selva Branca", chiclete);
 Musica digaQueValeu = new Musica("Diga que valeu", chiclete);
 
-Playlist playlist = new("Chiclete com Banana as mais alegres, Radiohead as mais tristes");
-playlist.AdicionarMusica(digaQueValeu);
-playlist.AdicionarMusica(airbag);
-playlist.AdicionarMusica(paranoidAndroid);
-playlist.AdicionarMusica(digaQueValeu);
-playlist.AdicionarMusica(karmaPolice);
+//Playlist playlist = new("Chiclete com Banana as mais alegres, Radiohead as mais tristes");
+//playlist.AdicionarMusica(digaQueValeu);
+//playlist.AdicionarMusica(airbag);
+//playlist.AdicionarMusica(paranoidAndroid);
+//playlist.AdicionarMusica(digaQueValeu);
+//playlist.AdicionarMusica(karmaPolice);
 
-playlist.ExibirMusicas();
+//playlist.ExibirMusicas();
+
+Episodio episodio = new Episodio(1, "Dia dos Namorados", 15);
+
+Podcast pod1 = new Podcast("Mano Brown", "Mano a Mano");
+
+episodio.AdicionarConvidado("Douglas Silva");
+episodio.AdicionarConvidado("Darlan Cunha");
+
+Console.WriteLine(episodio.Resumo);
