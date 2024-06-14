@@ -21,6 +21,14 @@ public class Musica
         Console.WriteLine($"Titulo: {Faixa}");
         Console.WriteLine($"Artista: {Artista.Nome}");
         Console.WriteLine($"Duração: {DuracaoEmSegundos}");
+        if(DisponívelNoPlano)
+        {
+            Console.WriteLine("Disponível no Plano");
+        } 
+        else
+        {
+            Console.WriteLine("Adquira o plano+");
+        }
     }
 
 }

@@ -5,13 +5,7 @@ int opcaoEscolhida = -1;
 Dictionary<string, List<int>> listaDeArtistas = new Dictionary<string, List<int>>()
 {
     {"Soccer Mommy", new List<int>{10, 8, 6, 8} },
-    {"Fleetwood Mac", new List<int>{10, 9, 6, 8} },
-    {"Thundercat", new List<int>{10, 8, 6, 8} },
-    {"Silk Sonic", new List<int>{10, 8, 6, 8} },
-    {"The Beatles", new List<int>{10, 8, 4, 6} },
-    {"The Rolling Stones", new List<int>{10, 8, 6, 8} },
-    {"The Who", new List<int>{10, 8, 6, 8} },
-    {"The Doors", new List<int>{10, 8, 6, 8} }
+    {"Mac DeMarco", new List<int> {10, 10 , 6} }
 };
 
 while (opcaoEscolhida != 0)

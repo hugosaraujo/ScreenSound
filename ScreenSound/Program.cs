@@ -1,43 +1,188 @@
-﻿using ScreenSound.Modelos;
-using ScreenSound.Modelos.Podcast;
+﻿using System.Net.NetworkInformation;
 
-Artista radiohead = new("Radiohead");
+int opcaoEscolhida = -1;
 
-Album okComputer = new Album("Ok Computer");
-
-Musica karmaPolice = new Musica("Karma Police", radiohead);
-karmaPolice.DuracaoEmSegundos = 261;
-
-Musica paranoidAndroid = new Musica("Paranoid Android", radiohead);
-paranoidAndroid.DuracaoEmSegundos = 383;
-
-Musica airbag = new Musica("Airbag", radiohead)
+Dictionary<string, List<int>> listaDeArtistas = new Dictionary<string, List<int>>()
 {
-    DuracaoEmSegundos = 264
+    {"Soccer Mommy", new List<int>{10, 8, 6, 8} },
+    {"Mac DeMarco", new List<int> {10, 10 , 6} }
 };
 
-okComputer.AdcionarFaixa(karmaPolice);
-okComputer.AdcionarFaixa(airbag);
-okComputer.AdcionarFaixa(paranoidAndroid);
+while (opcaoEscolhida != 0)
+{
+    ExibirMenuDeOpcoes();
+};
 
-Artista chiclete = new Artista("Chiclete com Banana");
-Musica selvaBranca = new Musica("Selva Branca", chiclete);
-Musica digaQueValeu = new Musica("Diga que valeu", chiclete);
 
-//Playlist playlist = new("Chiclete com Banana as mais alegres, Radiohead as mais tristes");
-//playlist.AdicionarMusica(digaQueValeu);
-//playlist.AdicionarMusica(airbag);
-//playlist.AdicionarMusica(paranoidAndroid);
-//playlist.AdicionarMusica(digaQueValeu);
-//playlist.AdicionarMusica(karmaPolice);
+void ExibirBanner()
+{
+    string banner = @"
+░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
+██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
+╚█████╗░██║░░╚═╝██████╔╝█████╗░░█████╗░░██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
+░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██╔══╝░░██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
+██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
+╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░";
 
-//playlist.ExibirMusicas();
+    string mensagemBoasVindas = "Boas vindas ao Screen Sound";
 
-Episodio episodio = new Episodio(1, "Dia dos Namorados", 15);
+    Console.WriteLine(banner);
+    Console.WriteLine(mensagemBoasVindas);
+    Console.WriteLine();
 
-Podcast pod1 = new Podcast("Mano Brown", "Mano a Mano");
+}
 
-episodio.AdicionarConvidado("Douglas Silva");
-episodio.AdicionarConvidado("Darlan Cunha");
+void ExibirMenuDeOpcoes()
+{
+    ExibirBanner();
 
-Console.WriteLine(episodio.Resumo);
+    Console.WriteLine("Digite 1 para registrar uma banda ou artista");
+    Console.WriteLine("Digite 2 para registrar um album de um artista");
+    Console.WriteLine("Digite 3 para mostrar artistas registrados");
+    Console.WriteLine("Digite 4 para avaliar um artita");
+    Console.WriteLine("Digite 5 para exibir os detalhes de um artista");
+    Console.WriteLine("Digite 0 para fechar a aplicação\n");
+
+    Console.Write("Selecione uma da opções disponíveis: ");
+    opcaoEscolhida = int.Parse(Console.ReadLine()!);
+
+    switch (opcaoEscolhida)
+    {
+        case 1:
+            RegistrarArtista();
+            break;
+        case 2:
+            RegistrarAlbum();
+            break;
+        case 3:
+            MostrarArtistas();
+            break;
+        case 4:
+            AvaliarArtista();
+            break;
+        case 5:
+            ExibirMedia();
+            break;
+        case 0:
+            FecharAplicacao();
+            break;
+        default:
+            ExibirOpcaoInvalida();
+            break;
+    }
+}
+
+void ExibirTitulo(string titulo)
+{
+    int tamanhoTitulo = titulo.Length;
+    string asteriscos = new string('*', tamanhoTitulo + 2);
+
+    Console.WriteLine(asteriscos);
+    Console.WriteLine($"*{titulo}*");
+    Console.WriteLine(asteriscos);
+    Console.WriteLine();
+}
+
+void RegistrarArtista()
+{
+    Console.Clear();
+    ExibirTitulo("Registrar Artista");
+    Console.Write("Digite do nome do Artista: ");
+    string artista = Console.ReadLine()!;
+    listaDeArtistas.Add(artista, new List<int>());
+    Console.WriteLine($"\n{artista} foi registrado com sucesso!!!");
+    Thread.Sleep(2000);
+    Console.Clear();
+}
+
+void RegistrarAlbum()
+{
+    Console.Clear();
+    ExibirTitulo("Registro de álbuns");
+    Console.Write("Digite a banda cujo álbum deseja registrar: ");
+    string nomeDaBanda = Console.ReadLine()!;
+    Console.Write("Agora digite o título do álbum: ");
+    string tituloAlbum = Console.ReadLine()!;
+    /**
+     * ESPAÇO RESERVADO PARA COMPLETAR A FUNÇÃO
+     */
+    Console.WriteLine($"O álbum {tituloAlbum} de {nomeDaBanda} foi registrado com sucesso!");
+    Thread.Sleep(4000);
+    Console.Clear();
+};
+
+void MostrarArtistas()
+{
+    Console.Clear();
+    ExibirTitulo("Exibir Artistas Registrados");
+    foreach (var artista in listaDeArtistas.Keys)
+    {
+        Console.WriteLine(artista);
+    }
+    Console.WriteLine();
+    Console.Write("Pressione qualquer tecla para retornar para o menu principal: ");
+    Console.ReadKey();
+    Console.Clear();
+}
+
+void AvaliarArtista()
+{
+    Console.Clear();
+    ExibirTitulo("Avaliar Artista");
+    Console.Write("Digite o nome do Artista: ");
+    string artista = Console.ReadLine()!;
+    if (listaDeArtistas.ContainsKey(artista))
+    {
+        Console.Write("Digite a nota do Artista: ");
+        int avaliacao = int.Parse(Console.ReadLine()!);
+        listaDeArtistas[artista].Add(avaliacao);
+        Console.WriteLine($"\nVocê avaliou {artista} com a nota {avaliacao}!!!");
+    }
+    else
+    {
+        Console.WriteLine("\nArtista não encontrado!!!");
+    }
+    Console.WriteLine();
+    Console.Write("Pressione qulaquer tecla para retornar para o menu principal: ");
+    Console.ReadKey();
+    Console.Clear();
+}
+
+void ExibirMedia()
+{
+    Console.Clear();
+    ExibirTitulo("Exibir Média do Artista");
+    Console.Write("Digite o nome do Artista: ");
+    string artista = Console.ReadLine()!;
+    if (listaDeArtistas.ContainsKey(artista))
+    {
+        List<int> avaliacoes = listaDeArtistas[artista];
+        double media = avaliacoes.Average();
+        Console.WriteLine($"\n{artista} tem uma média de {media} avaliações");
+    }
+    else
+    {
+        Console.WriteLine("\nArtista não encontrado!!!");
+    }
+    Console.WriteLine();
+    Console.Write("Pressione qualquer tecla para retornar para o menu principal: ");
+    Console.ReadKey();
+    Console.Clear();
+}
+
+void FecharAplicacao()
+{
+    Console.Clear();
+    Console.WriteLine("Fechando a aplicação...");
+    Thread.Sleep(2000);
+    Console.WriteLine("\nTchau Tchau!!");
+}
+
+void ExibirOpcaoInvalida()
+{
+    Console.Clear();
+    ExibirTitulo("Você selecionou uma opção inválida.");
+    Console.Write("Pressione qualquer tecla para voltar para o Menu Principal");
+    Console.ReadKey();
+    Console.Clear();
+}

@@ -14,9 +14,9 @@ public class Episodio
         Ordem = ordem;
     }
 
-    public string Titulo { get; set; }
-    public int Duracao { get; set; }
-    public int Ordem { get; set; }
+    public string Titulo { get; }
+    public int Duracao { get; }
+    public int Ordem { get; }
     public string Resumo => 
         $"{Ordem} - {Titulo}, Tempo do Episódio: {Duracao} minutos - Convidados {string.Join(", ", _convidados)}";
 

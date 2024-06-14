@@ -10,8 +10,8 @@ public class Podcast
         Nome = nome;
     }
 
-    public string Host { get; set; }
-    public string Nome { get; set; }
+    public string Host { get; }
+    public string Nome { get; }
     public int TotalEpisodios => _listaDeEpisodios.Count;
 
     public void AdicionarEpisodio(Episodio episodio)
@@ -22,6 +22,10 @@ public class Podcast
     public void ExibirDetalhes()
     {
         Console.WriteLine($"Podcast: {Nome}, Apresentado por {Host}");
+        foreach(var episodio  in _listaDeEpisodios.OrderBy(e => e.Ordem))
+        {
+            Console.WriteLine(episodio.Resumo);
+        }
         _listaDeEpisodios.ForEach(episodio => Console.WriteLine(episodio.Titulo)); 
     }
 }
