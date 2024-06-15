@@ -1,11 +1,23 @@
-﻿using System.Net.NetworkInformation;
+﻿using ScreenSound.Modelos;
 
 int opcaoEscolhida = -1;
 
-Dictionary<string, List<int>> listaDeArtistas = new Dictionary<string, List<int>>()
+Artista jt = new("Justin Timberlake");
+jt.AdicionarNota(6);
+jt.AdicionarNota(7);
+Artista sm = new("Soccer Mommy");
+sm.AdicionarNota(10);
+sm.AdicionarNota(8);
+Artista mac = new("Mac DeMarco");
+mac.AdicionarNota(8);
+mac.AdicionarNota(10);
+mac.AdicionarNota(7);
+
+Dictionary<string, Artista> listaDeArtistas = new()
 {
-    {"Soccer Mommy", new List<int>{10, 8, 6, 8} },
-    {"Mac DeMarco", new List<int> {10, 10 , 6} }
+    {sm.Nome, sm },
+    {mac.Nome, mac },
+    {jt.Nome, jt }
 };
 
 while (opcaoEscolhida != 0)
@@ -34,6 +46,7 @@ void ExibirBanner()
 
 void ExibirMenuDeOpcoes()
 {
+    Console.Clear();
     ExibirBanner();
 
     Console.WriteLine("Digite 1 para registrar uma banda ou artista");
@@ -88,27 +101,34 @@ void RegistrarArtista()
     Console.Clear();
     ExibirTitulo("Registrar Artista");
     Console.Write("Digite do nome do Artista: ");
-    string artista = Console.ReadLine()!;
-    listaDeArtistas.Add(artista, new List<int>());
-    Console.WriteLine($"\n{artista} foi registrado com sucesso!!!");
+    string nomeArtista = Console.ReadLine()!;
+    Artista artista = new(nomeArtista);
+    listaDeArtistas.Add(nomeArtista, artista);
+    Console.WriteLine($"\n{nomeArtista} foi registrado com sucesso!!!");
     Thread.Sleep(2000);
-    Console.Clear();
 }
 
 void RegistrarAlbum()
 {
     Console.Clear();
     ExibirTitulo("Registro de álbuns");
-    Console.Write("Digite a banda cujo álbum deseja registrar: ");
-    string nomeDaBanda = Console.ReadLine()!;
-    Console.Write("Agora digite o título do álbum: ");
-    string tituloAlbum = Console.ReadLine()!;
-    /**
-     * ESPAÇO RESERVADO PARA COMPLETAR A FUNÇÃO
-     */
-    Console.WriteLine($"O álbum {tituloAlbum} de {nomeDaBanda} foi registrado com sucesso!");
-    Thread.Sleep(4000);
-    Console.Clear();
+    Console.Write("Digite o artista cujo álbum deseja registrar: ");
+    string nomeArtista = Console.ReadLine()!;
+    
+    if (listaDeArtistas.ContainsKey(nomeArtista))
+    {
+        Artista artista = new(nomeArtista);
+        Console.Write("Agora digite o título do álbum: ");
+        string tituloAlbum = Console.ReadLine()!;
+        artista.AdicionarAlbum(new Album(tituloAlbum));
+        Console.WriteLine($"\nO álbum {tituloAlbum} de {nomeArtista} foi registrado com sucesso!");
+    } 
+    else
+    {
+        Console.WriteLine("Artista não encontrado no sistema");
+    }
+    Console.WriteLine("\nPressione qualquer tecla para voltar para o Menu Principal");
+    Console.ReadKey();
 };
 
 void MostrarArtistas()
@@ -122,7 +142,6 @@ void MostrarArtistas()
     Console.WriteLine();
     Console.Write("Pressione qualquer tecla para retornar para o menu principal: ");
     Console.ReadKey();
-    Console.Clear();
 }
 
 void AvaliarArtista()
@@ -130,13 +149,14 @@ void AvaliarArtista()
     Console.Clear();
     ExibirTitulo("Avaliar Artista");
     Console.Write("Digite o nome do Artista: ");
-    string artista = Console.ReadLine()!;
-    if (listaDeArtistas.ContainsKey(artista))
+    string nomeArtista = Console.ReadLine()!;
+    if (listaDeArtistas.ContainsKey(nomeArtista))
     {
+        Artista artista = new(nomeArtista);
         Console.Write("Digite a nota do Artista: ");
         int avaliacao = int.Parse(Console.ReadLine()!);
-        listaDeArtistas[artista].Add(avaliacao);
-        Console.WriteLine($"\nVocê avaliou {artista} com a nota {avaliacao}!!!");
+        artista.AdicionarNota(avaliacao);
+        Console.WriteLine($"\nVocê avaliou {nomeArtista} com a nota {avaliacao}!!!");
     }
     else
     {
@@ -145,29 +165,25 @@ void AvaliarArtista()
     Console.WriteLine();
     Console.Write("Pressione qulaquer tecla para retornar para o menu principal: ");
     Console.ReadKey();
-    Console.Clear();
 }
 
 void ExibirMedia()
 {
     Console.Clear();
-    ExibirTitulo("Exibir Média do Artista");
-    Console.Write("Digite o nome do Artista: ");
-    string artista = Console.ReadLine()!;
-    if (listaDeArtistas.ContainsKey(artista))
-    {
-        List<int> avaliacoes = listaDeArtistas[artista];
-        double media = avaliacoes.Average();
-        Console.WriteLine($"\n{artista} tem uma média de {media} avaliações");
-    }
+    ExibirTitulo("Exibir Média da Artista");
+    Console.Write("Digite o nome do Artista que quer saber os detalhes: ");
+    string nomeArtista = Console.ReadLine()!;
+    if (listaDeArtistas.ContainsKey(nomeArtista)){
+        Artista artista = new(nomeArtista);
+        Console.WriteLine($"Artista: {nomeArtista}");
+    } 
     else
     {
-        Console.WriteLine("\nArtista não encontrado!!!");
+        Console.WriteLine("Artista não encontrado");
     }
     Console.WriteLine();
-    Console.Write("Pressione qualquer tecla para retornar para o menu principal: ");
+    Console.Write("Pressione qualquer tecla para voltar para o menu principal: ");
     Console.ReadKey();
-    Console.Clear();
 }
 
 void FecharAplicacao()
