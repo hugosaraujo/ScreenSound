@@ -1,13 +1,16 @@
 ﻿using ScreenSound.Modelos;
+using System.Runtime;
 
 int opcaoEscolhida = -1;
 
 Artista jt = new("Justin Timberlake");
 jt.AdicionarNota(6);
 jt.AdicionarNota(7);
+
 Artista sm = new("Soccer Mommy");
 sm.AdicionarNota(10);
 sm.AdicionarNota(8);
+
 Artista mac = new("Mac DeMarco");
 mac.AdicionarNota(8);
 mac.AdicionarNota(10);
@@ -174,8 +177,8 @@ void ExibirMedia()
     Console.Write("Digite o nome do Artista que quer saber os detalhes: ");
     string nomeArtista = Console.ReadLine()!;
     if (listaDeArtistas.ContainsKey(nomeArtista)){
-        Artista artista = new(nomeArtista);
-        Console.WriteLine($"Artista: {nomeArtista}");
+        Artista artista = listaDeArtistas[nomeArtista];
+        Console.WriteLine($"Artista: {nomeArtista}, Media: {artista.Media}");
     } 
     else
     {

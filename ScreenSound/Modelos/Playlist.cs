@@ -2,7 +2,7 @@
 
 public class Playlist
 {
-    private List<Musica> _musicas = new List<Musica>();
+    private List<Musica> musicas = new List<Musica>();
 
     public Playlist(string nome)
     {
@@ -14,11 +14,11 @@ public class Playlist
 
     public void AdicionarMusica(Musica musica)
     {
-        _musicas.Add(musica);
+        musicas.Add(musica);
     }
 
     public void ExibirMusicas()
     {
-        _musicas.ForEach(musica => Console.WriteLine($"Titulo da Musica: {musica.Faixa}"));
+        musicas.ForEach(musica => Console.WriteLine($"Titulo da Musica: {musica.Faixa}"));
     }
 }
