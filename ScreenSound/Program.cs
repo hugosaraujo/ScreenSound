@@ -120,7 +120,7 @@ void RegistrarAlbum()
     
     if (listaDeArtistas.ContainsKey(nomeArtista))
     {
-        Artista artista = new(nomeArtista);
+        Artista artista = listaDeArtistas[nomeArtista];
         Console.Write("Agora digite o título do álbum: ");
         string tituloAlbum = Console.ReadLine()!;
         artista.AdicionarAlbum(new Album(tituloAlbum));
@@ -130,7 +130,7 @@ void RegistrarAlbum()
     {
         Console.WriteLine("Artista não encontrado no sistema");
     }
-    Console.WriteLine("\nPressione qualquer tecla para voltar para o Menu Principal");
+    Console.Write("\nPressione qualquer tecla para voltar para o Menu Principal: ");
     Console.ReadKey();
 };
 
@@ -178,7 +178,7 @@ void ExibirMedia()
     string nomeArtista = Console.ReadLine()!;
     if (listaDeArtistas.ContainsKey(nomeArtista)){
         Artista artista = listaDeArtistas[nomeArtista];
-        Console.WriteLine($"Artista: {nomeArtista}, Media: {artista.Media}");
+        artista.ExibirDiscografia();
     } 
     else
     {
