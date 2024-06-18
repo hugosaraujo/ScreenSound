@@ -106,8 +106,9 @@ void RegistrarArtista()
     string nomeArtista = Console.ReadLine()!;
     Artista artista = new(nomeArtista);
     listaDeArtistas.Add(nomeArtista, artista);
-    Console.WriteLine($"\n{nomeArtista} foi registrado com sucesso!!!");
-    Thread.Sleep(2000);
+    Console.Write($"\n{nomeArtista} foi registrado com sucesso!!!");
+    Console.Write("Pressione qualquer tecla para voltar para o menu principal: ");
+    Console.ReadKey();
 }
 
 void RegistrarAlbum()
@@ -154,9 +155,9 @@ void AvaliarArtista()
     string nomeArtista = Console.ReadLine()!;
     if (listaDeArtistas.ContainsKey(nomeArtista))
     {
-        Artista artista = new(nomeArtista);
+        Artista artista = listaDeArtistas[nomeArtista];
         Console.Write("Digite a nota do Artista: ");
-        var avaliacao = Avaliacao.Parse(Console.ReadLine()!);
+        Avaliacao avaliacao = Avaliacao.Parse(Console.ReadLine()!);
         artista.AdicionarNota(avaliacao);
         Console.WriteLine($"\nVocê avaliou {nomeArtista} com a nota {avaliacao.Nota}!!!");
     }
