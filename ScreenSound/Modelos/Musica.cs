@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 
 namespace ScreenSound.Modelos;
-public class Musica
+internal class Musica
 {
     public Musica(string faixa, Artista artista)
     {

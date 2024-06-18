@@ -1,6 +1,6 @@
 ﻿namespace ScreenSound.Modelos;
 
-public class Album
+internal class Album
 {
     private List<Musica> faixas = new List<Musica>();
 

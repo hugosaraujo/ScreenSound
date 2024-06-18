@@ -1,6 +1,6 @@
 ﻿namespace ScreenSound.Modelos;
 
-public class Genero
+internal class Genero
 {
     public string Tipo { get; set; }
 }

@@ -1,9 +1,9 @@
 ﻿namespace ScreenSound.Modelos;
 
-public class Artista
+internal class Artista
 {
     private List<Album> albums = new();
-    private List<int> notas = new();
+    private List<Avaliacao> notas = new();
 
     public Artista(string nome)
     {
@@ -11,7 +11,14 @@ public class Artista
     }
 
     public string Nome { get; }
-    public double Media => notas.Average();
+    public double Media
+    {
+        get
+        {
+            if (notas.Count == 0) return 0;
+            else return notas.Average(a => a.Nota);
+        }
+    }
     public List<Album> Albums => albums;
 
     public void AdicionarAlbum(Album album)
