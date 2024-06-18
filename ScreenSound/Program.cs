@@ -1,20 +1,19 @@
 ﻿using ScreenSound.Modelos;
-using System.Runtime;
 
 int opcaoEscolhida = -1;
 
 Artista jt = new("Justin Timberlake");
-jt.AdicionarNota(6);
-jt.AdicionarNota(7);
+jt.AdicionarNota(new Avaliacao(6));
+jt.AdicionarNota(new Avaliacao(7));
 
 Artista sm = new("Soccer Mommy");
-sm.AdicionarNota(10);
-sm.AdicionarNota(8);
+sm.AdicionarNota(new Avaliacao(10));
+sm.AdicionarNota(new Avaliacao(8));
 
 Artista mac = new("Mac DeMarco");
-mac.AdicionarNota(8);
-mac.AdicionarNota(10);
-mac.AdicionarNota(7);
+mac.AdicionarNota(new Avaliacao(8));
+mac.AdicionarNota(new Avaliacao(10));
+mac.AdicionarNota(new Avaliacao(7));
 
 Dictionary<string, Artista> listaDeArtistas = new()
 {
@@ -157,9 +156,9 @@ void AvaliarArtista()
     {
         Artista artista = new(nomeArtista);
         Console.Write("Digite a nota do Artista: ");
-        int avaliacao = int.Parse(Console.ReadLine()!);
+        var avaliacao = Avaliacao.Parse(Console.ReadLine()!);
         artista.AdicionarNota(avaliacao);
-        Console.WriteLine($"\nVocê avaliou {nomeArtista} com a nota {avaliacao}!!!");
+        Console.WriteLine($"\nVocê avaliou {nomeArtista} com a nota {avaliacao.Nota}!!!");
     }
     else
     {
@@ -191,8 +190,7 @@ void ExibirMedia()
 
 void FecharAplicacao()
 {
-    Console.Clear();
-    Console.WriteLine("Fechando a aplicação...");
+    Console.WriteLine("\nFechando a aplicação...");
     Thread.Sleep(2000);
     Console.WriteLine("\nTchau Tchau!!");
 }

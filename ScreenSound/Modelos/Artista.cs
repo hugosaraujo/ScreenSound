@@ -26,14 +26,14 @@ internal class Artista
         albums.Add(album);
     }
 
-    public void AdicionarNota(int nota)
+    public void AdicionarNota(Avaliacao nota)
     {
         notas.Add(nota);
     }
 
     public void ExibirDiscografia()
     {
-        Console.WriteLine($"Artista: {Nome}, Média: {Media}");
+        Console.WriteLine($"Artista: {Nome} -> Média: {Media}");
         Console.WriteLine($"Lista de Albums de {Nome}");
         albums.ForEach(
             album => Console.WriteLine($"Nome do Disco: {album.Nome}"));
