@@ -1,4 +1,5 @@
-﻿using ScreenSound.Modelos;
+﻿using ScreenSound.Menu;
+using ScreenSound.Modelos;
 
 int opcaoEscolhida = -1;
 
@@ -61,28 +62,36 @@ void ExibirMenuDeOpcoes()
     Console.Write("Selecione uma da opções disponíveis: ");
     opcaoEscolhida = int.Parse(Console.ReadLine()!);
 
+    Menu acessoMenu; 
+
     switch (opcaoEscolhida)
     {
         case 1:
             RegistrarArtista();
             break;
         case 2:
-            RegistrarAlbum();
+            acessoMenu = new MenuRegistrarAlbum();
+            acessoMenu.Executar(listaDeArtistas);
             break;
         case 3:
-            MostrarArtistas();
+            acessoMenu = new MenuExibirArtistas();
+            acessoMenu.Executar(listaDeArtistas);
             break;
         case 4:
-            AvaliarArtista();
+            acessoMenu = new MenuAvaliarArtista();
+            acessoMenu.Executar(listaDeArtistas);
             break;
         case 5:
-            ExibirMedia();
+            acessoMenu = new MenuExibirDetalhes();
+            acessoMenu.Executar(listaDeArtistas);
             break;
         case 0:
-            FecharAplicacao();
+            acessoMenu = new MenuFecharAplicacao();
+            acessoMenu.Executar(listaDeArtistas);
             break;
         default:
-            ExibirOpcaoInvalida();
+            acessoMenu = new MenuExibirOpcaoInvalida(); 
+            acessoMenu.Executar(listaDeArtistas);
             break;
     }
 }
@@ -109,98 +118,4 @@ void RegistrarArtista()
     Console.Write($"\n{nomeArtista} foi registrado com sucesso!!!");
     Console.Write("Pressione qualquer tecla para voltar para o menu principal: ");
     Console.ReadKey();
-}
-
-void RegistrarAlbum()
-{
-    Console.Clear();
-    ExibirTitulo("Registro de álbuns");
-    Console.Write("Digite o artista cujo álbum deseja registrar: ");
-    string nomeArtista = Console.ReadLine()!;
-    
-    if (listaDeArtistas.ContainsKey(nomeArtista))
-    {
-        Artista artista = listaDeArtistas[nomeArtista];
-        Console.Write("Agora digite o título do álbum: ");
-        string tituloAlbum = Console.ReadLine()!;
-        artista.AdicionarAlbum(new Album(tituloAlbum));
-        Console.WriteLine($"\nO álbum {tituloAlbum} de {nomeArtista} foi registrado com sucesso!");
-    } 
-    else
-    {
-        Console.WriteLine("Artista não encontrado no sistema");
-    }
-    Console.Write("\nPressione qualquer tecla para voltar para o Menu Principal: ");
-    Console.ReadKey();
-};
-
-void MostrarArtistas()
-{
-    Console.Clear();
-    ExibirTitulo("Exibir Artistas Registrados");
-    foreach (var artista in listaDeArtistas.Keys)
-    {
-        Console.WriteLine(artista);
-    }
-    Console.WriteLine();
-    Console.Write("Pressione qualquer tecla para retornar para o menu principal: ");
-    Console.ReadKey();
-}
-
-void AvaliarArtista()
-{
-    Console.Clear();
-    ExibirTitulo("Avaliar Artista");
-    Console.Write("Digite o nome do Artista: ");
-    string nomeArtista = Console.ReadLine()!;
-    if (listaDeArtistas.ContainsKey(nomeArtista))
-    {
-        Artista artista = listaDeArtistas[nomeArtista];
-        Console.Write("Digite a nota do Artista: ");
-        Avaliacao avaliacao = Avaliacao.Parse(Console.ReadLine()!);
-        artista.AdicionarNota(avaliacao);
-        Console.WriteLine($"\nVocê avaliou {nomeArtista} com a nota {avaliacao.Nota}!!!");
-    }
-    else
-    {
-        Console.WriteLine("\nArtista não encontrado!!!");
-    }
-    Console.WriteLine();
-    Console.Write("Pressione qulaquer tecla para retornar para o menu principal: ");
-    Console.ReadKey();
-}
-
-void ExibirMedia()
-{
-    Console.Clear();
-    ExibirTitulo("Exibir Média da Artista");
-    Console.Write("Digite o nome do Artista que quer saber os detalhes: ");
-    string nomeArtista = Console.ReadLine()!;
-    if (listaDeArtistas.ContainsKey(nomeArtista)){
-        Artista artista = listaDeArtistas[nomeArtista];
-        artista.ExibirDiscografia();
-    } 
-    else
-    {
-        Console.WriteLine("Artista não encontrado");
-    }
-    Console.WriteLine();
-    Console.Write("Pressione qualquer tecla para voltar para o menu principal: ");
-    Console.ReadKey();
-}
-
-void FecharAplicacao()
-{
-    Console.WriteLine("\nFechando a aplicação...");
-    Thread.Sleep(2000);
-    Console.WriteLine("\nTchau Tchau!!");
-}
-
-void ExibirOpcaoInvalida()
-{
-    Console.Clear();
-    ExibirTitulo("Você selecionou uma opção inválida.");
-    Console.Write("Pressione qualquer tecla para voltar para o Menu Principal");
-    Console.ReadKey();
-    Console.Clear();
 }
