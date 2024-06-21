@@ -1,8 +1,6 @@
 ﻿using ScreenSound.Menu;
 using ScreenSound.Modelos;
 
-int opcaoEscolhida = -1;
-
 Artista jt = new("Justin Timberlake");
 jt.AdicionarNota(new Avaliacao(6));
 jt.AdicionarNota(new Avaliacao(7));
@@ -23,34 +21,21 @@ Dictionary<string, Artista> listaDeArtistas = new()
     {jt.Nome, jt }
 };
 
-while (opcaoEscolhida != 0)
-{
-    ExibirMenuDeOpcoes();
-};
+Dictionary<int, Menu> opcoes = new();
+opcoes.Add(1, new MenuRegistrarArtista());
+opcoes.Add(2, new MenuRegistrarAlbum());
+opcoes.Add(3, new MenuExibirArtistas());
+opcoes.Add(4, new MenuAvaliarArtista());
+opcoes.Add(5, new MenuExibirDetalhes());
+opcoes.Add(0, new MenuFecharAplicacao());
 
-
-void ExibirBanner()
-{
-    string banner = @"
-░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
-██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
-╚█████╗░██║░░╚═╝██████╔╝█████╗░░█████╗░░██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
-░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██╔══╝░░██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
-██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
-╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░";
-
-    string mensagemBoasVindas = "Boas vindas ao Screen Sound";
-
-    Console.WriteLine(banner);
-    Console.WriteLine(mensagemBoasVindas);
-    Console.WriteLine();
-
-}
+ExibirMenuDeOpcoes();
 
 void ExibirMenuDeOpcoes()
 {
     Console.Clear();
-    ExibirBanner();
+
+    Menu.ExibirBanner();
 
     Console.WriteLine("Digite 1 para registrar uma banda ou artista");
     Console.WriteLine("Digite 2 para registrar um album de um artista");
@@ -60,62 +45,18 @@ void ExibirMenuDeOpcoes()
     Console.WriteLine("Digite 0 para fechar a aplicação\n");
 
     Console.Write("Selecione uma da opções disponíveis: ");
-    opcaoEscolhida = int.Parse(Console.ReadLine()!);
+    int opcaoEscolhida = int.Parse(Console.ReadLine()!);
 
-    Menu acessoMenu; 
-
-    switch (opcaoEscolhida)
+    if (opcoes.ContainsKey(opcaoEscolhida))
     {
-        case 1:
-            RegistrarArtista();
-            break;
-        case 2:
-            acessoMenu = new MenuRegistrarAlbum();
-            acessoMenu.Executar(listaDeArtistas);
-            break;
-        case 3:
-            acessoMenu = new MenuExibirArtistas();
-            acessoMenu.Executar(listaDeArtistas);
-            break;
-        case 4:
-            acessoMenu = new MenuAvaliarArtista();
-            acessoMenu.Executar(listaDeArtistas);
-            break;
-        case 5:
-            acessoMenu = new MenuExibirDetalhes();
-            acessoMenu.Executar(listaDeArtistas);
-            break;
-        case 0:
-            acessoMenu = new MenuFecharAplicacao();
-            acessoMenu.Executar(listaDeArtistas);
-            break;
-        default:
-            acessoMenu = new MenuExibirOpcaoInvalida(); 
-            acessoMenu.Executar(listaDeArtistas);
-            break;
+        Menu acessoOpcoes = opcoes[opcaoEscolhida];
+        acessoOpcoes.Executar(listaDeArtistas);
+        
+        if(opcaoEscolhida !=0 ) ExibirMenuDeOpcoes();
     }
-}
-
-void ExibirTitulo(string titulo)
-{
-    int tamanhoTitulo = titulo.Length;
-    string asteriscos = new string('*', tamanhoTitulo + 2);
-
-    Console.WriteLine(asteriscos);
-    Console.WriteLine($"*{titulo}*");
-    Console.WriteLine(asteriscos);
-    Console.WriteLine();
-}
-
-void RegistrarArtista()
-{
-    Console.Clear();
-    ExibirTitulo("Registrar Artista");
-    Console.Write("Digite do nome do Artista: ");
-    string nomeArtista = Console.ReadLine()!;
-    Artista artista = new(nomeArtista);
-    listaDeArtistas.Add(nomeArtista, artista);
-    Console.Write($"\n{nomeArtista} foi registrado com sucesso!!!");
-    Console.Write("Pressione qualquer tecla para voltar para o menu principal: ");
-    Console.ReadKey();
+    else
+    {
+        Console.Write("\nPressione qualquer tecla para voltar para o Menu Principal!");
+        Thread.Sleep(2000);
+    }
 }
