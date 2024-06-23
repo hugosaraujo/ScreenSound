@@ -26,7 +26,8 @@ opcoes.Add(1, new MenuRegistrarArtista());
 opcoes.Add(2, new MenuRegistrarAlbum());
 opcoes.Add(3, new MenuExibirArtistas());
 opcoes.Add(4, new MenuAvaliarArtista());
-opcoes.Add(5, new MenuExibirDetalhes());
+opcoes.Add(5, new MenuAvaliarAlbum());
+opcoes.Add(6, new MenuExibirDetalhes());
 opcoes.Add(0, new MenuFecharAplicacao());
 
 ExibirMenuDeOpcoes();
@@ -41,7 +42,8 @@ void ExibirMenuDeOpcoes()
     Console.WriteLine("Digite 2 para registrar um album de um artista");
     Console.WriteLine("Digite 3 para mostrar artistas registrados");
     Console.WriteLine("Digite 4 para avaliar um artita");
-    Console.WriteLine("Digite 5 para exibir os detalhes de um artista");
+    Console.WriteLine("Digite 5 para avaliar um album");
+    Console.WriteLine("Digite 6 para exibir os detalhes de um artista");
     Console.WriteLine("Digite 0 para fechar a aplicação\n");
 
     Console.Write("Selecione uma da opções disponíveis: ");
