@@ -11,6 +11,7 @@ internal class Playlist
 
     public string Nome { get; set; }
     public Genero Genero { get; set; }
+    public IEnumerable<Musica> Musicas => musicas;
 
     public void AdicionarMusica(Musica musica)
     {

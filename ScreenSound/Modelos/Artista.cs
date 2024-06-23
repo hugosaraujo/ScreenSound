@@ -21,7 +21,7 @@ internal class Artista : IAvaliavel
             else return notas.Average(a => a.Nota);
         }
     }
-    public List<Album> Albums => albums;
+    public IEnumerable<Album> Albums => albums;
 
     public void AdicionarAlbum(Album album)
     {

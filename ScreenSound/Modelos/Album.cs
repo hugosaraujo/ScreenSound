@@ -23,6 +23,7 @@ internal class Album : IAvaliavel
             else return notas.Average(a => a.Nota);
         }
     }
+    public IEnumerable<Musica> Faixas => faixas;
     public int DuracaoTotalMinutos => (int)Math.Ceiling(DuracaoTotal);
     public static int ContadorDeAlbums = 0;
 
