@@ -39,7 +39,7 @@ void ExibirMenuDeOpcoes()
     Menu.ExibirBanner();
 
     Console.WriteLine("Digite 1 para registrar uma banda ou artista");
-    Console.WriteLine("Digite 2 para registrar um album de um artista");
+    Console.WriteLine("Digite 2 para registrar um album");
     Console.WriteLine("Digite 3 para mostrar artistas registrados");
     Console.WriteLine("Digite 4 para avaliar um artita");
     Console.WriteLine("Digite 5 para avaliar um album");

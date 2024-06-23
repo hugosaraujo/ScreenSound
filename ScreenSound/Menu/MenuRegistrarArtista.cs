@@ -12,7 +12,7 @@ internal class MenuRegistrarArtista : Menu
         string nomeArtista = Console.ReadLine()!;
         Artista artista = new(nomeArtista);
         listaDeArtistas.Add(nomeArtista, artista);
-        Console.Write($"\n{nomeArtista} foi registrado com sucesso!!!");
+        Console.WriteLine($"\n{nomeArtista} foi registrado com sucesso!!!");
         Console.Write("Pressione qualquer tecla para voltar para o menu principal: ");
         Console.ReadKey();
     }

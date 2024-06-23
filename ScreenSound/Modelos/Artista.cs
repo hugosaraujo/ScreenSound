@@ -38,6 +38,6 @@ internal class Artista : IAvaliavel
         Console.WriteLine($"Artista: {Nome} -> Média: {Media}");
         Console.WriteLine($"Lista de Albums de {Nome}");
         albums.ForEach(
-            album => Console.WriteLine($"Nome do Disco: {album.Nome}"));
+            album => Console.WriteLine($"Nome do Disco: {album.Nome} -> {album.Media}"));
     }
 }
